@@ -1,0 +1,96 @@
+{
+    "object_type": "list",
+    "header_type": "15일 중식메뉴",
+    "header_link": {
+        "web_url": "www.naver.com",
+        "mobile_web_url": "www.naver.com"
+    },
+    "contents": [
+        {
+            "title": "1. 장조림버터볶음밥",
+            "description": "설명1",
+            "image_url": "",
+            "image_width": 50,
+            "image_height": 50,
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        },
+        {
+            "title": "2. 친환경쌀밥",
+            "description": "설명2",
+            "image_url": "",
+            "image_width": 50,
+            "image_height": 50,
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        },
+        {
+            "title": "3. 팽이버섯된장국",
+            "description": "설명3",
+            "image_url": "",
+            "image_width": 50,
+            "image_height": 50,
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        },
+        {
+            "title": "4. 삼색과일컵",
+            "description": "설명4",
+            "image_url": "",
+            "image_width": 50,
+            "image_height": 50,
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        },
+        {
+            "title": "5. 배추김치",
+            "description": "설명5",
+            "image_url": "",
+            "image_width": 50,
+            "image_height": 50,
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        },
+        {
+            "title": "6. 이-오",
+            "description": "설명6",
+            "image_url": "",
+            "image_width": 50,
+            "image_height": 50,
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        },
+        {
+            "title": "7. 아이돌인기샌드위치(/)",
+            "description": "설명7",
+            "image_url": "",
+            "image_width": 50,
+            "image_height": 50,
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        }
+    ],
+    "buttons": [
+        {
+            "title": "웹으로 이동",
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        }
+    ]
+}

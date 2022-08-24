@@ -1,0 +1,3046 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />
+		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/script/jquery-latest.js"></script>
+<script type="text/javascript" src="/script/hrBar.js"></script>
+<script type="text/javascript" src="/script/jquery-1.4.2.min.js"></script>  
+<script type="text/javascript">
+	if(navigator.userAgent.match("MSIE 7.0") || navigator.userAgent.match("MSIE 6.0") || navigator.userAgent.match("MSIE 5.0")){
+		location.href = "/sptNotice.jsp"
+	}
+
+ 	$().ready(function(){
+
+		//메인 메뉴 토글 활성화
+		
+		if($('#gnb')){
+			$('#gnb > ul > li > a ').mouseover(activeMainMenu);
+			$('#gnb > ul > li > a ').focus(activeMainMenu);
+		}	
+
+ 	});
+
+	function activeMainMenu(){
+		$('#gnb > ul > li').removeClass('hover');
+		$('#gnb > ul > li').removeClass('on');
+		$(this).parent().addClass('hover');
+	}	
+		
+</script>
+
+
+
+
+<script type="text/javascript">
+//<!--
+
+document.oncontextmenu = function anonymous() { alert('마우스 오른쪽 버튼은 사용하실 수 없습니다'); return false; }
+document.onselectstart=function(){return false;}
+
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+function MM_showHideLayers2() {
+  var i,p,v,obj,args=MM_showHideLayers2.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+	if (obj.style) { obj=obj.style; v=(v=='show')?'':(v=='none')?'none':v; }
+	obj.display=v;}
+}
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+
+  window.open(theURL,winName,features);
+
+}
+// 엔터 클릭시 실행되는 펑션 각 페이지에서 필요한 매소드 재정의
+function Load()
+{
+    if(event.keyCode==13)
+    {   
+       	enterDown();
+    }
+}
+
+function enterDown()
+{
+	//searchStr에 포커스가 있으면 검색 실행
+	//goSearch();
+}
+
+// KeyUp 이벤트
+function keyUp()
+{
+	return;
+}
+
+// 검색결과 페이지
+function goSearch()
+{
+	var forms = document.searchForm;
+	
+	if( forms.searchStr.value == null || forms.searchStr.value == "" )
+	{
+		alert("검색어를 입력하세요");
+		forms.searchStr.focus();
+		return false;
+	} 
+	
+	window.open("", "search", "width=720 height=600 scrollbars=yes");
+	forms.method = "POST";
+	forms.target = "search";
+	forms.action = "/search.do";
+	forms.submit();
+}
+
+// 메인홈페이지
+//홈페이지 내 검색
+function goSearch4(reqType)
+{
+	
+	var forms = "";
+	
+	if(reqType =="1")
+	{
+		forms = document.searchForm;
+		if( forms.searchStr.value == null || forms.searchStr.value == "" )
+		{
+			
+			alert("검색어를 입력하세요");
+			forms.searchStr.focus();
+			return false;
+		}
+	}
+	else
+	{
+		forms = document.searchFormM;
+		if( forms.searchStr.value == null || forms.searchStr.value == "" )
+		{
+			alert("검색어를 입력하세요");
+			forms.searchStr.focus();
+			return false;
+		}
+	}
+	
+	forms.method = "POST";
+	forms.target = "search";
+	forms.action = "/search.do";
+	forms.submit();
+}
+
+// 에듀넷 검색
+function goSearch7(reqType)
+{
+	
+	var forms = "";
+	
+	if(reqType =="1")
+	{
+		forms = document.siteSearchForm;
+		if( forms.kwd.value == null || forms.kwd.value == "" )
+		{
+			
+			alert("검색어를 입력하세요");
+			forms.kwd.focus();
+			return false;
+		}
+	}
+	else
+	{
+		forms = document.siteSearchFormM;
+		if( forms.kwd.value == null || forms.kwd.value == "" )
+		{
+			alert("검색어를 입력하세요");
+			forms.kwd.focus();
+			return false;
+		}
+	}
+	
+	var link="https://www.edunet.net/nsearch/search/search.do?kwd="+forms.kwd.value;
+	window.open(link);
+}
+
+// 기본 값 초기화
+function goSearch2(flag) {
+	
+	if(flag=='')
+		flag="미사용";
+
+	var data=flag;
+	sessionStorage.setItem("search", flag);
+	
+	var data2=sessionStorage.getItem("search3");
+
+	if(data == '에듀넷 검색'){
+			document.getElementById("home_search2").style.display="none";
+			document.getElementById("search_option4").disabled='disabled';
+	}
+	else if(data == '홈페이지 검색'){
+			document.getElementById("edu_search2").style.display="none";
+			document.getElementById("search_option4").disabled='disabled';
+	}
+	else if(data == '전체'){
+		
+		if(data2!=null){
+			if(data2=='홈페이지 검색'){
+				document.getElementById("edu_search2").style.display="none";
+				document.getElementsByName("Psearch_option")[0].options[0].selected=1;
+			}
+			else {
+				document.getElementById("home_search2").style.display="none";
+				document.getElementsByName("Psearch_option")[0].options[1].selected=1;
+			}
+		}
+		else{
+			document.getElementById("edu_search2").style.display="none";
+			document.getElementsByName("Psearch_option")[0].options[0].selected=1;
+		}
+	}
+	else{
+		document.getElementById("box_search_0").style.display="none";
+	}
+}
+
+// pc용 선택 옵션 체크
+function goSearch3() {
+	
+	var data=document.getElementById("search_option4").value;
+	sessionStorage.setItem("search", "전체");
+	sessionStorage.setItem("search3", data);
+	
+	if(data == '에듀넷 검색'){
+			document.getElementById("home_search2").style.display="none";
+			document.getElementById("edu_search2").style.display="block";
+	}
+	if(data == '홈페이지 검색'){
+			document.getElementById("edu_search2").style.display="none";
+			document.getElementById("home_search2").style.display="block";
+	}
+}
+
+// 모바일용 선택 옵션 체크
+function goSearch5() {
+	var data=document.getElementsByName("search_option")[0].value;
+	sessionStorage.setItem("search", "전체");
+	
+	if(data == '에듀넷 검색'){
+		document.getElementsByName("searchFormM")[0].style.display="none";
+		document.getElementsByName("search_option")[0].options[0].selected=1;
+		document.getElementsByName("siteSearchFormM")[0].style.display="block";
+	}
+	if(data == '홈페이지 검색'){
+		document.getElementsByName("searchFormM")[0].style.display="block";
+		document.getElementsByName("search_option2")[0].options[1].selected=1;
+		document.getElementsByName("siteSearchFormM")[0].style.display="none";
+	}
+}
+
+//모바일용 선택 옵션 체크2
+function goSearch6() {
+	var data=document.getElementsByName("search_option2")[0].value;
+	sessionStorage.setItem("search", "전체");
+	
+	if(data == '에듀넷 검색'){
+		document.getElementsByName("searchFormM")[0].style.display="none";
+		document.getElementsByName("search_option")[0].options[0].selected=1;
+		document.getElementsByName("siteSearchFormM")[0].style.display="block";
+	}
+	if(data == '홈페이지 검색'){
+		document.getElementsByName("searchFormM")[0].style.display="block";
+		document.getElementsByName("search_option2")[0].options[1].selected=1;
+		document.getElementsByName("siteSearchFormM")[0].style.display="none";
+	}
+}
+
+// 모바일 검색
+
+// 기본 값 설정
+function start_sub(){
+	var s = sessionStorage.getItem("search");
+	var s2 = sessionStorage.getItem("search3");
+		
+	if(s2==null)
+		s2='홈페이지 검색';
+	
+	if(s == '에듀넷 검색'){
+		document.getElementById("home_search2").style.display="none";
+		document.getElementsByName("search_option3")[0].options[0].selected=1;
+		document.getElementsByName("search_option3")[0].disabled='disabled';
+	}
+	else if(s == '홈페이지 검색'){
+		document.getElementById("edu_search2").style.display="none";
+		document.getElementsByName("search_option3")[0].options[1].selected=1;
+		document.getElementsByName("search_option3")[0].disabled='disabled';
+	}
+	else if(s == '전체'){
+		if(s2 == '홈페이지 검색'){
+			document.getElementById("edu_search2").style.display="none";
+			document.getElementsByName("search_option3")[0].options[1].selected=1;
+		}
+		else{
+			document.getElementById("home_search2").style.display="none";
+			document.getElementsByName("search_option3")[0].options[0].selected=1;
+		}
+	}
+	else{
+		document.getElementById("box_search_0").style.display="none";
+	}
+	
+}
+
+// 홈페이지 내 검색
+function goSearch9(reqType)
+{
+	var forms = "";
+	
+	if(reqType =="1")
+	{
+		forms = document.searchForm;
+		if( forms.searchStr.value == null || forms.searchStr.value == "" )
+		{
+			alert("검색어를 입력하세요");
+			forms.searchStr.focus();
+			return false;
+		}
+	}
+	else
+	{
+		forms = document.searchFormM;
+		if( forms.searchStr.value == null || forms.searchStr.value == "" )
+		{
+			alert("검색어를 입력하세요");
+			forms.searchStr.focus();
+			return false;
+		}
+	}
+	
+	forms.method = "POST";
+	forms.target = "search";
+	forms.action = "/search.do";
+	forms.submit();
+}
+
+//에듀넷 검색
+function goSearch10(reqType)
+{
+	
+	var forms = "";
+	
+	if(reqType =="1")
+	{
+		forms = document.siteSearchForm;
+		if( forms.kwd.value == null || forms.kwd.value == "" )
+		{
+			
+			alert("검색어를 입력하세요");
+			forms.kwd.focus();
+			return false;
+		}
+	}
+	else
+	{
+		forms = document.siteSearchFormM;
+		if( forms.kwd.value == null || forms.searchStr2.value == "" )
+		{
+			alert("검색어를 입력하세요");
+			forms.kwd.focus();
+			return false;
+		}
+	}
+	
+	var link="https://www.edunet.net/nsearch/search/search.do?kwd="+forms.kwd.value;
+	window.open(link);
+}
+
+// pc용 선택 옵션 체크
+function goSearch8() {
+	var data=document.getElementById("search_option3").value;
+	sessionStorage.setItem("search3", data);
+
+	if(data == '에듀넷 검색'){
+			document.getElementById("home_search2").style.display="none";
+			document.getElementById("edu_search2").style.display="block";
+	}
+	if(data == '홈페이지 검색'){
+			document.getElementById("edu_search2").style.display="none";
+			document.getElementById("home_search2").style.display="block";
+	}
+}
+
+
+//================= 미니리스트 마우스오버 =====================
+function selMiniList(listID, listNum)
+{
+	for(i=1;i<10;i++)
+	{
+		var id = listID+i;
+		if(document.getElementById(id) != null)
+			document.getElementById(id).style.display = "none";
+	}
+	var id = listID+listNum;
+	document.getElementById(id).style.display = "block";
+}
+//================= 미니리스트 마우스오버 =====================
+
+
+
+//================= 탭버튼 =====================
+
+/************************************
+*	buttonType	=	img / text		*
+*	contentYN	=	Y / N			*
+*	id			=	id값			*
+************************************/
+
+
+
+
+
+//================= 팝업관련 =====================
+function getCookieKL( name ) 
+{
+	var nameOfCookie = name + "=";
+	var x = 0;
+	while ( x <= document.cookie.length ) 
+	{
+		var y = (x+nameOfCookie.length);
+		if ( document.cookie.substring( x, y ) == nameOfCookie ) 
+		{
+			if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+				endOfCookie = document.cookie.length;
+			return unescape( document.cookie.substring( y, endOfCookie ) ); 
+		}
+		x = document.cookie.indexOf( " ", x ) + 1;
+		if ( x == 0 )
+			break; 
+	}
+	return ""; 
+}
+//리스트팝업존 메인에서만 열리도록 설정
+var openPopCount = "N";
+var openPopL = "N";
+var openPopN = "N";
+
+openPopCount = "Y";
+function popupList()
+{
+	if(getCookieKL("icpaA") != "popupA")
+		window.open("/popupA.do?popType=A", "popupA", "width=357 height=477");
+}
+//================= 팝업관련 =====================
+
+
+
+
+
+
+
+
+//================= 개인정보보호등 =====================
+function privacy()
+{
+	if(!confirm("개인정보처리방침을 여시겠습니까?"))
+		return;
+	window.open("/priPrivacy.do", "privacy", "width=800, height=600, scrollbars=yes");
+}
+function email() 
+{
+	if(!confirm("이메일주소수집거부을 여시겠습니까?"))
+		return;
+	window.open("/email.do", "email", "width=710 height=600 scrolls=no");
+}
+function copyright()
+{
+	if(!confirm("저작권지침 및 신고을 여시겠습니까?"))
+		return;
+	window.open("/copyright.do", "copyright", "width=710 height=600 scrolls=no");
+}
+function priPrivacy()
+{
+	if(!confirm("개인정보처리방침을 여시겠습니까?"))
+		return;
+	window.open("/priPrivacy.do", "priPrivacy", "width=850, height=600, scrollbars=yes");
+}
+//================= 개인정보보호등 =====================
+	
+
+
+
+
+
+
+
+
+
+//================= 교육기부 ============================
+function eduLink(){
+	document.getElementById("eduLink").style.display="none";
+	document.getElementById("eduLink2").style.display="block";
+	document.getElementById("eduLink3").style.display="block";
+}
+//================= 교육기부 ============================
+
+	
+
+
+
+
+
+
+
+
+//================= 메뉴관련 =====================
+function leftMenuView(idx)
+{ 
+	var str = "" + idx;
+
+	for(i=100; i<150; i++)
+	{
+		if(document.getElementById("LMenu" + i))
+		{
+			hide_menu = document.getElementById("LMenu"+i);
+			// 3자리 이상 idx일때 양끝 하나씩 잘라낸것과 일치하는것은 바로 상위 메뉴이므로 감추지 않는다.
+			if(str.length >= 3 && isPrnt(str, i))
+			{
+				hide_menu.style.display = 'block';
+			}
+			else
+			{
+				hide_menu.style.display = 'none';
+			}
+		}
+	}
+	subMenu = document.getElementById("LMenu"+idx);
+	if(subMenu != null)
+		subMenu.style.display = 'block'; 
+}
+
+function isPrnt(str, idx)
+{
+	var subStr = str.substring(1,str.length-1);
+	if(parseInt(subStr) == idx)
+		return true;
+
+	if(subStr.length >= 3 && isPrnt(subStr, idx))
+		return true;
+
+	return false;
+}
+
+function viewSiteMap(url){
+ 	if(document.getElementById("layerSiteMap").style.visibility == "hidden") 
+ 	{
+  		document.getElementById("layerSiteMap").style.visibility = "visible";
+  		document.getElementById("SiteMapFrm").src =url;  
+ 	}
+ 	else
+ 	{
+  		document.getElementById("layerSiteMap").style.visibility = "hidden";
+ 	}
+}
+
+var prevIdx = 0;
+function subMenuView(idx)
+{ 
+	hide_menu = document.getElementById("subMenu"+prevIdx);
+	if(hide_menu != null && hide_menu.style.display  == 'block')
+		hide_menu.style.display = 'none';
+				
+	subMenu = document.getElementById("subMenu"+idx);
+	if(subMenu != null)
+	{
+		subMenu.style.display = 'block'; 
+		prevIdx = idx
+	}
+}
+
+//================= 메뉴관련 =====================
+function isValidSN(jumin1, jumin2)
+{
+	var ssn1 = jumin1;
+	var ssn2 = jumin2;
+	var ssn=ssn1+ssn2;
+	a = new Array(13);
+	for (var i=0; i < 13; i++) 
+	{
+		a[i] = parseInt(ssn.charAt(i));
+	}
+	var k = 11 - (((a[0] * 2) + (a[1] * 3) + (a[2] * 4) + (a[3] * 5) + (a[4] * 6) + (a[5] * 7) + (a[6] * 8) + (a[7] * 9) + (a[8] * 2) + (a[9] * 3) + (a[10] * 4) + (a[11] * 5)) % 11);
+	if (k > 9)
+	{
+		k -= 10;
+	}
+	if (k == a[12])
+		return true;
+	else
+		return false;	
+}
+function goLogin()
+{
+	location.href="https://ptlogin.icemaster.kr/login.do?rtUrl=http://icpa.icehs.kr:80&sessID=F8k3vVqJ8fKvQLK91lLGnbVcy3zrv81R1MC2VK0WRLTFxJlBkzMc!-1903591493!1653992169904&loginNeisCD=E100002244";
+}
+
+function goTestLogin()
+{
+	location.href="https://ptlogin.icemaster.kr/loginTest.do?rtUrl=http://icpa.icehs.kr:80&sessID=F8k3vVqJ8fKvQLK91lLGnbVcy3zrv81R1MC2VK0WRLTFxJlBkzMc!-1903591493!1653992169904&loginNeisCD=E100002244";
+}
+
+function goJoin()
+{
+	var forms = document.tmpForm;
+
+	forms.target = "tmpFrm";
+	forms.action = "/login/login/JoinPop.jsp";
+	//window.open("/sub/call/mem/contents/login.jsp","","location=no width=600 height=300");
+	//forms.action = "/sub/mem/contents/login.jsp";
+	forms.submit();
+}
+function tempLogin(usrID, usrPW)
+{
+	var forms = document.tmpForm;
+	forms.ciKey.value = usrID;
+	forms.certiKey.value = usrPW;
+	forms.action = "/login.do";	
+	forms.submit();
+}
+
+function goMsg()
+{
+	//alert("서비스 준비중입니다");
+	var forms = document.tmpForm;
+
+	forms.target = "tmpFrm";
+	forms.action = "/msg.do";
+	forms.submit();
+	
+}
+
+function siteMap()
+{
+	window.open("/sitemap.do","login","width=900 height=620 scrollbars=yes");
+}
+
+function chgInfo()
+{
+	var forms = document.tmpForm;
+	
+	forms.target = "tmpFrm";
+	forms.action = "https://ptlogin.icemaster.kr/login/login/chgInfoPop.jsp";
+	forms.submit();
+}
+
+//총관리자가 수정한 날짜에 마이페이지가 열리도록 수정
+
+function chgMemDataInfo()
+{
+	var forms = document.chMebForm;
+	
+	forms.target = "chMebFrm";
+	forms.action = "/login/login/chgInfoPop.jsp";
+	forms.submit();
+}
+
+//학교 교가 
+function playMugic(num){
+	var url =  + "/UserFiles/" + sysID + "/pullo.mp3";
+		if(num == "1"){
+				ie_player.FileName = url;
+				ie_player.AutoStart = true;
+				ie_player.play()
+		}else{
+				ie_player.FileName = url;
+				ie_player.AutoStart = true;
+				ie_player.stop()
+		}
+	}
+
+// 자료관리자등에서 사용할 직원찾기
+function empSrch(reqUsrID, reqUsrNM, reqDeptCD, reqDeptNM, reqEMail, reqPhone)
+{
+	var url = "/sub/dje/dataMng/empSrch.jsp?usrID="+reqUsrID+"&usrNM="+reqUsrNM+"&deptCD="+reqDeptCD+"&deptNM="+reqDeptNM+"&email="+reqEMail+"&phone="+reqPhone;
+	window.open(url, "empSrch", "width=550, height=500, scrollbars=yes");
+}
+
+// 권한설정 창 오픈
+function popupAuth(url, ele)
+{
+	var cnts = eval("document."+ele).value;
+	url = url+"?Ele="+ele+"&Cnts="+cnts;
+
+	window.open(url, '','width=400,height=500, scrollbars=yes, resizable=yes');
+}
+
+//템플릿설정 창 오픈
+function popupTemp(url, ele)
+{	
+	var cnts = eval("document.authForm."+ele).value;
+	url = url+"?Ele="+ele+"&Cnts="+cnts;
+	
+	window.open(url, '','width=1000,height=540, scrollbars=yes, resizable=yes');
+}
+
+function popupTemp2(url, ele)
+{	
+	var cnts = eval("document.authForm."+ele).value;
+	url = url+"?Ele="+ele+"&Cnts="+cnts;
+	
+	window.open(url, '','width=500,height=540, scrollbars=yes, resizable=yes');
+}
+
+function allSrch(reqUsrID, reqUsrNM, reqDeptCD, reqDeptNM, reqEMail, reqPhone)
+{
+	var url = "/sub/dje/dataMng/allSrch.jsp?usrID="+reqUsrID+"&usrNM="+reqUsrNM+"&deptCD="+reqDeptCD+"&deptNM="+reqDeptNM+"&email="+reqEMail+"&phone="+reqPhone;
+	window.open(url, "empSrch", "width=550, height=500, scrollbars=yes");
+}
+
+// 스트링의 str1에 해당하는 문자열을 str2로 바꾼다.
+// 사용법.
+
+String.prototype.replaceAll = function(str1, str2)
+{
+  	var temp_str = "";
+
+  	if (this.trim() != "" && str1 != str2)
+  	{
+    	temp_str = this.trim();
+
+   	 	while (temp_str.indexOf(str1) > -1)
+    	{
+      		temp_str = temp_str.replace(str1, str2);
+    	}
+  	}
+  return temp_str;
+}
+
+// 문자열을 한번 바꾼다.
+function replace(msrc,sstr,rstr) {
+       var idx,sleft,sright;
+
+       msrc+="";
+       sstr+="";
+       rstr+="";
+       idx=msrc.indexOf(sstr);
+       if (idx > -1) {
+              sleft = msrc.substring(0,idx) + rstr;
+              sright = msrc.substring(idx+sstr.length);
+              return sleft + replace(sright,sstr,rstr);
+       } else {
+              return msrc;
+       }
+}
+
+//================= 날짜 선택 =====================
+  function Popup_Date(reqRY, reqCallBack)
+  {
+    var wWidth = 300;
+    var wHeight = 300;
+    var wTop = ((screen.height - 100) - wHeight) / 2 ;
+    var wLeft = (screen.width - wWidth) / 2;
+
+    var wTarget = 'KLFRAME_CALENDAR';
+    var wAddr =  '/script/calendar/calenadarM.jsp';
+
+    wAddr = wAddr + '?R=' + reqRY
+    wAddr = wAddr + '&T=S'
+	if(reqCallBack != null)
+		wAddr += '&CallBack=' + reqCallBack;
+
+    wNewWin = window.open(wAddr, wTarget,'toolbar=no,menubar=no,location=no,directories=no,status=no,scrollbars=no,resizable=yes,width='+wWidth+',height='+wHeight+',top='+wTop+',left='+wLeft+'');
+    wNewWin.focus();
+  }
+  
+  function Popup_Period(reqR, reqIdx)
+  {
+    var wWidth = 300;
+    var wHeight = 300;
+    var wTop = ((screen.height - 100) - wHeight) / 2 ;
+    var wLeft = (screen.width - wWidth) / 2;
+
+    var wTarget = 'KLFRAME_CALENDAR';
+    var wAddr =  '/script/calendar/calenadarM.jsp';
+
+    wAddr = wAddr + '?R=' + reqR
+    wAddr = wAddr + '&Idx=' + reqIdx
+    wAddr = wAddr + '&T=P'
+
+    wNewWin = window.open(wAddr, wTarget,'toolbar=no,menubar=no,location=no,directories=no,status=no,scrollbars=no,resizable=yes,width='+wWidth+',height='+wHeight+',top='+wTop+',left='+wLeft+'');
+    wNewWin.focus();
+  }
+  //================= 날짜 선택 =====================
+
+//================= 팝업창 컨트롤 관련 =====================
+function setCookieKL( name, value, expiredays ) 
+{
+	var todayDate = new Date();
+	todayDate.setDate( todayDate.getDate() + expiredays );
+	document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";" 
+}
+
+function getCookieKL( name ) 
+{
+	var nameOfCookie = name + "=";
+	var x = 0;
+	while ( x <= document.cookie.length ) 
+	{
+		var y = (x+nameOfCookie.length);
+		if ( document.cookie.substring( x, y ) == nameOfCookie ) 
+		{
+			if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+				endOfCookie = document.cookie.length;
+			return unescape( document.cookie.substring( y, endOfCookie ) ); 
+		}
+		x = document.cookie.indexOf( " ", x ) + 1;
+		if ( x == 0 )
+			break; 
+	}
+	return ""; 
+}
+
+function open_layer(frameName, name, seq)
+{
+	document.all[name].style.visibility = "visible";
+	eval("document."+frameName).location.replace('/popupL.do?popType=L&seq='+seq);
+} 
+
+function closeLayer(name)
+{
+	document.all[name].style.visibility = "hidden";
+}
+
+function closeLayerDay(name)
+{
+	document.all[name].style.visibility = "hidden";
+	setCookieKL( name, "done" , 1);
+}
+
+function closeWin(name)
+{
+	self.close();
+}
+
+function closeWinDay(name)
+{
+	self.close();
+	setCookieKL( name, "done" , 1);
+}
+//================= 팝업창 컨트롤 관련 =====================
+
+// 프레임 사이즈 조절
+function selfResize(reqDiv, reqFrm)
+{ 
+	dataobj = document.getElementById(reqDiv) //
+
+    dataobj.style.top=0 
+    dataobj.style.left=0 
+
+    pagelength=dataobj.offsetHeight
+    pagewidth=dataobj.offsetWidth
+
+    parent.document.getElementById(reqFrm).height=pagelength  
+    parent.document.getElementById(reqFrm).width=pagewidth 
+} 
+
+// 우편번호 검색
+function openZipcode(reqZip, reqAddr1)
+{
+	var url = "/sub/common/zipcode.jsp?zipNM="+reqZip+"&addrNM="+reqAddr1;
+	window.open(url,'','width=450,height=350,scrollbars=yes');
+}
+
+
+// 필수입력오류체크
+function cmnErrCertChk(reqForm, reqName, reqFoucs)
+{
+	if(reqForm.value == "")
+	{
+		alert(reqName +" 입력해주세요");
+		reqForm.value = "";
+		if(reqForm != null && reqFoucs != "N")
+			reqForm.focus();
+		return false;
+	}
+	return true;
+}
+
+// 숫자입력오류체크
+function numErrChk(reqForm)
+{
+	if(isNaN(reqForm.value) || reqForm.value=="")
+	{
+		alert("숫자만 입력할수 있습니다");
+		reqForm.value = "0";
+		reqForm.focus();
+		return false;
+	}
+	return true;
+}
+	
+function CheckEMail (emailStr) 
+{  
+	// 전자메일 패턴. 사용자이름@도메인 의 형식을 검사함  
+	var emailPat=/^(.+)@(.+)$/;
+	// 포함되지 말아야할 특수문자들 ( ) < > @ , ; : \ " . [ ]  
+	var specialChars="\\(\\)<>@,;:\\\\\\\"\\.\\[\\]";  
+	// 포함될 수 있는 특수문자들 (나머지)  
+	var validChars="\[^\\s" + specialChars + "\]";  
+	// 아래의 경우는 사용자 이름에 따옴표가 있는 경우. RFC표준사항임  
+	var quotedUser="(\"[^\"]*\")"; 
+	// 도메인 대신 IP를 사용할 수있음  
+	// 예를 들어 laday@[210.120.253.10]은 올바른 메일 주소 "[", "]"이 반드시 필요 
+	var ipDomainPat=/^\[(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\]$/;  
+	// 기본적인 아토믹에 해당됨  
+	var atom=validChars + '+';  
+	// 사용자로 사용될 수 있는 문자를 나타냄  
+	var word="(" + atom + "|" + quotedUser + ")";  
+	// 사용자의 패턴을 나타냄. 위의 워드가 .단위로 여러개 올 수있음  
+	var userPat=new RegExp("^" + word + "(\\." + word + ")*$");  
+	// 아래의 것은 일반적인 도메인 패턴에 해당됨  
+	var domainPat=new RegExp("^" + atom + "(\\." + atom +")*$");  
+	// @을 기준으로 사용자와 도메인으로 나눔. 편의를 위함  
+	var matchArray=emailStr.match(emailPat);  
+	if (matchArray==null) 
+	{    
+	// 두개 이상 또는 @이 아예 없는 경우   
+		alert("메일주소 형식이 잘못되어 있습니다 (공백 및 @과 .을 확인해 보세요)");    
+		return false; 
+	}  
+	var user=matchArray[1];  
+	var domain=matchArray[2];  
+	// 사용자 부분이 제대로 되었는지 검사  
+	if (user.match(userPat)==null) 
+	{    
+		alert("메일 아이디가 올바르지 않습니다");    
+		return false;  
+	} 
+	// 도메인 부분이 IP로 되어 있는 경우 
+	var IPArray=domain.match(ipDomainPat);  
+	if (IPArray!=null) 
+	{    
+		for (var i=1;i<=4;i++) 
+		{      
+			if (IPArray[i]>255) 
+			{        
+				alert("IP 주소 형식이 올바르지 않습니다");        
+				return false;      
+			}    
+		}    
+		return true;  
+	}  
+	// 도메인 이름이 심볼릭 네임인 경우 올바르지 않음  
+	var domainArray=domain.match(domainPat);  
+	if (domainArray==null) 
+	{    
+		alert("도메인 형식이 올바르지 않습니다");   
+		return false; 
+	}  
+	// 도메인 형식 검사에 통과했더라도, 마지막 세개 또는 두개의 문자(com, net, kr등등)  
+	// 까지 올바른지 검사. 최상위 도메인은 반드시 세글자 아니면 두 글자임  
+	var atomPat=new RegExp(atom,"g");  
+	var domArr=domain.match(atomPat);  
+	var len=domArr.length;  
+	if (domArr[domArr.length-1].length<2 ||    domArr[domArr.length-1].length>3) 
+	{    
+		alert("도메인 주소의 마지막 필드는 반드시 세글자 도메인 또는 두글자 나라이어야 합니다.");    
+		return false; 
+	}  
+	// 호스트이름이 있는지 검사  
+	if (len<2) 
+	{    
+		alert("호스트 이름이 존재하지 않습니다. 호스트 이름은 반드시 2글자 이상이어야 합니다");    
+		return false;  
+	}  
+	
+	return true;
+}	
+//-->
+
+/* var nowZoom = 100; // 현재비율
+ var maxZoom = 500; // 최대비율(500으로하면 5배 커진다)
+ var minZoom = 100; // 최소비율*/
+
+var nowZoom = 1; 
+var maxZoom = 2; 
+var minZoom = 1; 
+var reduceMinZoom = 0.5;
+
+ // +, - 키를 입력하면 화면 확대, 축소를 한다.
+ document.onkeypress = getKey;
+
+ function getKey(keyStroke) {
+	  isNetscape = (document.layers);
+	  eventChooser = (isNetscape) ? keyStroke.which : event.keyCode;
+	  which = String.fromCharCode(eventChooser).toLowerCase();
+	  which2 = eventChooser;
+
+	  var el = event.srcElement;
+
+	  if ((el.tagName != "INPUT") && (el.tagName != "TEXTAREA")) {
+	   if (which == "+") {
+	    zoomIn();
+	   } else if (which == "-") {
+	    zoomOut();
+	   }
+	  }
+	 }
+ 
+ //화면 기본.
+function zoomInit() {
+ if (nowZoom < maxZoom) {
+  nowZoom = 1;
+ } else {
+  return;
+ }
+
+ document.getElementById("wrap").style.transformOrigin = "50% 0%";
+ document.getElementById("wrap").style.transform = "scale("+nowZoom + ")";
+}	 
+
+//화면 키운다.
+function zoomIn() {
+ if (nowZoom < maxZoom) {
+  nowZoom += 0.05;
+ } else {
+  return;
+ }
+
+ document.getElementById("wrap").style.transformOrigin = "50% 0%";
+ document.getElementById("wrap").style.transform = "scale("+nowZoom + ")";
+}
+
+
+function zoomOut() {
+ if (nowZoom > reduceMinZoom) {
+  nowZoom -= 0.05; 
+ } else {
+  return;
+ }
+	 document.getElementById("wrap").style.transformOrigin = "50% 0%";
+	 document.getElementById("wrap").style.transform = "scale("+nowZoom + ")";
+}
+
+/*function reduceScreen() {
+	if (nowZoom > reduceMinZoom) {
+		nowZoom -= 0.05; 
+	} else {
+		return;
+	}
+	
+	 document.getElementById("wrap").style.transformOrigin = "50% 0%";
+	 document.getElementById("wrap").style.transform = "scale("+nowZoom + ")";
+}*/
+
+   function goPrint() {
+	 window.print(); 
+  }
+
+ // 메뉴바로가기
+ function quickMenu(obj)
+ {
+	var strUrlMenu = obj.options[obj.selectedIndex].value;
+	if(strUrlMenu != "")
+		location.href = strUrlMenu;
+ }
+ //사이트바로가기
+ function quickSite(obj)
+ {
+	var strUrlSite = obj.options[obj.selectedIndex].value;
+	if(strUrlSite != "")
+		window.open(strUrlSite);
+ }
+ 
+ //iframe 백그라운 설정
+ onload = function() {
+  var theframes = document.getElementsByTagName('iframe');
+  for(var i = 0; i < theframes.length; i++)
+  {
+   theframes[i].setAttribute("allowTransparency", "ture");
+  }
+ }
+ 
+
+function chkMenuAuth(auth){
+	if( auth == "2" )
+		alert("회원만 열람할 수 있는 메뉴입니다. 회원가입후 이용하세요.");
+	else if (auth == "3" )
+		alert("학부모만 열람할 수 있는 메뉴입니다.");
+	else if (auth == "4" )
+		alert("학생만 열람할 수 있는 메뉴입니다.");
+	else if (auth == "1" )
+		alert("실명인증후 열람할 수 있는 메뉴입니다. 아이핀 로그인 후 이용하세요.");
+	else if (auth == "5")
+		alert("교직원만 열람할 수 있는 메뉴입니다. 교직원 로그인 후 이용하세요.");
+	else if (auth == "6" )
+		alert("메뉴열람 권한이 없습니다.");
+	else if (auth == "7" )
+		alert("메뉴열람 권한이 없습니다.");
+}
+
+//파일다운로드
+function fileDown(fileNM, filePath)
+{
+	var forms = document.fileDownForm;
+	forms.saveName.value = fileNM;
+	forms.filePath.value = filePath;
+	forms.action ="/boardCnts/fileDown.do";
+	forms.submit();
+}
+
+
+
+
+
+
+//팝업존 스탑 
+function stopPopup() {
+   clearInterval(popupInt);
+}
+
+
+
+
+//팝업존 스탑 
+function stopBanner() {
+   clearInterval(popupInt);
+}
+
+$(document).ready( function() {$("thumbImg").css("display","block"); } );
+
+
+
+	if(window.location.href.match('www')){
+		var chgUrl = window.location.href.replace('www.','');
+		location.href = chgUrl;
+	}
+
+</script>
+
+<iframe name="tmpFrm" src="about:blank" width="0" height="0" title="로그인프레임" style="display:none;"></iframe>
+<form name="tmpForm" method="post">
+	<input type="hidden" name="rtUrl" value="http://icpa.icehs.kr:80" />
+	<input type="hidden" name="sessID" value="F8k3vVqJ8fKvQLK91lLGnbVcy3zrv81R1MC2VK0WRLTFxJlBkzMc!-1903591493!1653992169904" />
+	<input type="hidden" name="neisCD" value="E100002244" />
+	<input type="hidden" name="ciKey" value="" />
+	<input type="hidden" name="certiKey" value="" />
+	<input type="hidden" name="myPage" value="pass" />
+	<input type="hidden" name="sysID" value="icpa" /> 
+</form>
+<iframe name="chMebFrm" src="about:blank" width="0" height="0" title="로그인프레임" style="display:none;"></iframe>
+<form name="chMebForm" method="post">
+	<input type="hidden" name="rtUrl" value="http://icpa.icehs.kr:80" />
+	<input type="hidden" name="sessID" value="F8k3vVqJ8fKvQLK91lLGnbVcy3zrv81R1MC2VK0WRLTFxJlBkzMc!-1903591493!1653992169904" />
+	<input type="hidden" name="neisCD" value="E100002244" />
+	<input type="hidden" name="ciKey" value="" />
+	<input type="hidden" name="certiKey" value="" />
+	<input type="hidden" name="myPage" value="null" /> 
+</form>
+<form name="fileDownForm" method="post">
+	<input type="hidden" name="saveName" />
+	<input type="hidden" name="filePath" />
+</form>
+		
+
+<script language="JavaScript" type="text/JavaScript">
+
+// 게시판 등록
+function submitMgt(reqURL, reqMode)
+{
+	var form = document.authForm;
+	if(form.title.value == "")
+	{
+		alert("제목을 입력해주세요");
+		form.title.focus();
+		return;
+	}
+	if(form.col1Width.value=="") form.col1Width.value = 0;
+	if(form.col2Width.value=="") form.col2Width.value = 0;
+	if(form.col3Width.value=="") form.col3Width.value = 0;
+	if(form.col4Width.value=="") form.col4Width.value = 0;
+	if(form.col5Width.value=="") form.col5Width.value = 0;
+	if(form.col6Width.value=="") form.col6Width.value = 0;
+	if(form.col7Width.value=="") form.col7Width.value = 0;
+	if(form.col8Width.value=="") form.col8Width.value = 0;
+	if(form.col9Width.value=="") form.col9Width.value = 0;
+	if(form.col10Width.value=="") form.col10Width.value = 0;
+	if(form.col11Width.value=="") form.col11Width.value = 0;
+	if(form.col12Width.value=="") form.col12Width.value = 0;
+	if(form.col13Width.value=="") form.col13Width.value = 0;
+	if(form.col14Width.value=="") form.col14Width.value = 0;
+	if(form.col15Width.value=="") form.col15Width.value = 0;
+	/*
+	if(form.titleImgPath.value != "" || form.hasTitleImg.value != "")
+	{
+		if(form.titleImgWidth.value == "")
+		{
+			alert("타이틀 이미지 Width를 입력해주세요");
+			form.titleImgWidth.focus();
+			return;
+		}
+		if(form.titleImgHeight.value == "")
+		{
+			alert("타이틀 이미지 Height를 입력해주세요");
+			form.titleImgHeight.focus();
+			return;
+		}
+		if(isNaN(form.titleImgWidth.value))
+		{
+			alert("타이틀 이미지 Width는 숫자만 입력하실수 있습니다");
+			form.titleImgWidth.value = "";
+			form.titleImgWidth.focus();
+			return;
+		}
+		if(isNaN(form.titleImgHeight.value))
+		{
+			alert("타이틀 이미지 Height는 숫자만 입력하실수 있습니다");
+			form.titleImgHeight.value = "";
+			form.titleImgHeight.focus();
+			return;
+		}
+	}
+	else
+	{
+		form.titleImgWidth.value = 0;
+		form.titleImgHeight.value = 0;
+	}
+	*/
+	if(form.listWidth.value == "")
+	{
+		alert("리스트 Width를 입력해주세요");
+		form.listWidth.focus();
+		return;
+	}
+	if(form.viewWidth.value == "")
+	{
+		alert("뷰 Width를 입력해주세요");
+		form.viewWidth.focus();
+		return;
+	}
+	if(isNaN(form.listWidth.value))
+	{
+		alert("리스트 Width는 숫자만 입력하실수 있습니다");
+		form.listWidth.value = "";
+		form.listWidth.focus();
+		return;
+	}
+	if(isNaN(form.viewWidth.value))
+	{
+		alert("뷰 Height는 숫자만 입력하실수 있습니다");
+		form.viewWidth.value = "";
+		form.viewWidth.focus();
+		return;
+	}
+	if(form.pageSize.value == "")
+	{
+		alert("페이지 사이즈를 입력해주세요");
+		form.pageSize.focus();
+		return;
+	}
+	if(isNaN(form.pageSize.value))
+	{
+		alert("페이지사이즈는 숫자만 입력하실수 있습니다");
+		form.pageSize.value = "";
+		form.pageSize.focus();
+		return;
+	}
+	if(form.replyType.value == "L" && (form.replyBoardID.value == "" || form.replyBoardID.value == "0"))
+	{
+		alert("댓글게시판 아이디를 입력해주세요");
+		form.replyBoardID.focus();
+		return;
+	}
+	if(form.replyType.value == "L" && isNaN(form.replyBoardID.value))
+	{
+		alert("댓글게시판 아이디는 숫자만 입력하실수 있습니다");
+		form.replyBoardID.value = "";
+		form.replyBoardID.focus();
+		return;
+	}
+	if(form.replyType.value != "L" && form.replyBoardID.value != "" && form.replyBoardID.value != "0")
+	{
+		alert("리스트형 댓글이 아닌데 게시판  아이디를 입력하셨습니다\n확인해주세요");
+		form.replyBoardID.focus();
+		return;
+	}
+
+	
+	for(i=1;i<16;i++)
+	{
+		var colNM 		= "form.col"+i+"NM.value";
+		var colWidth 	= "form.col"+i+"Width.value";
+		var colListView = "form.col"+i+"ListView.checked";
+		
+		if(eval(colNM) != "" && eval(colWidth) == "" && eval(colListView) == true)
+		{
+			alert(i+"번째 컬럼의 사이즈를 지정해주세요");
+			eval("form.col"+i+"Width").focus();
+			return;
+		}
+	}
+	
+	var result 	= "";
+	for(j=0;j<24;j++)
+	{
+		var listOrd = "form.ListOrd" + j + ".value";
+		var listView = "form.col" + (j+1) + "ListView.checked";
+		// 확장 컬럼중 ListOrd값이 없거나 리스트 표시가 체크되있지 않을경우
+		if(j < 15 && (eval(listOrd) == "" || eval(listView) != true))
+			result += "0;";
+		// 번호의 ListOrd값이 없거나 컬럼명이 없을 경우
+		else if(j == 15 && (eval(listOrd) == "" || form.viewNum.value == ""))
+			result += "0;";
+		// 작성자의 ListOrd값이 없거나 컬럼명이 없을 경우
+		else if(j == 16 && (eval(listOrd) == "" || form.viewRegUsr.value == ""))
+			result += "0;";
+		// 작성일의 ListOrd값이 없거나 컬럼명이 없을 경우
+		else if(j == 17 && (eval(listOrd) == "" || form.viewRegDate.value == ""))
+			result += "0;";
+		// 조회수의 ListOrd값이 없거나 컬럼명이 없을 경우
+		else if(j == 18 && (eval(listOrd) == "" || form.viewCnt.value == ""))
+			result += "0;";
+		// 제목의 ListOrd값이 없거나 컬럼명이 없을 경우
+		else if(j == 19 && (eval(listOrd) == "" || form.subjectNM.value == ""))
+			result += "0;";
+		// 내용1의 ListOrd값이 없거나 컬럼명이 없을 경우
+		else if(j == 20 && (eval(listOrd) == "" || form.cnts1NM.value == ""))
+			result += "0;";
+		// 내용2의 ListOrd값이 없거나 컬럼명이 없을 경우
+		else if(j == 21 && (eval(listOrd) == "" || form.cnts2NM.value == ""))
+			result += "0;";
+		// 내용3의 ListOrd값이 없거나 컬럼명이 없을 경우
+		else if(j == 22 && (eval(listOrd) == "" || form.cnts3NM.value == ""))
+			result += "0;";
+		else if(j == 23 && (eval(listOrd) == "" || form.fileListNM.value == ""))
+			result += "0;";
+		else
+			result += eval(listOrd) + ";";		
+	}
+	form.listOrd.value = result;
+	
+	// 동일한 ListOrd값이 있는지 확인
+	for(l=0;l<23;l++)
+	{
+		var listOrd = "form.ListOrd" + l + ".value";
+		// 값이 0이면 패스
+		if(eval(listOrd) == 0) continue; 
+		// 공백이어도 패스
+		if(eval(listOrd) == "") continue; 
+		
+		for(k=0;k<13;k++)
+		{
+			// 자기자신은 패스
+			if(l == k) continue;
+						
+			var listOrd2 = "form.ListOrd" + k + ".value";
+
+			if(eval(listOrd) == eval(listOrd2))
+			{
+				alert("동일한 리스트 순서값이 존재합니다");
+				eval("form.ListOrd" + k).focus();
+
+				return;
+			}
+		}
+	}
+	
+	if(form.secYN.value == "Y" && form.secAuth.value == "A")
+	{
+		alert("비밀글 권한 설정을 해야합니다");
+		return;
+	}
+	
+	if(form.mgtAuth.value == "A")
+	{
+		alert("게시판관리 권한 설정을 해야합니다");
+		return;
+	}
+
+	var msg = "생성하시겠습니까?";
+	if(reqMode == "M")
+		msg = "수정하시겠습니까?";
+	if(confirm(msg))
+	{
+		ed.outputBodyHTML();
+		form.action = reqURL;
+		form.submit();
+	}
+}
+
+// 댓글타입 변경시 게시판 아이디 변경
+function onChgReply()
+{
+	var form = document.authForm;
+	if(form.replyType.value != "L")
+	{
+		form.replyBoardID.value = "0";
+	}
+}
+
+// 게시판 관리에서 listWidth설정시 하단의 baseListWidth 설정
+function setBaseListWidth()
+{
+	var form = document.authForm;
+	form.baseListWidth.value = form.listWidth.value;
+}
+
+// 게시판 관리에서 현재 설정된 각컬럼의 listWidth의 합을 보여준다.
+function sumListWidth()
+{
+	var form = document.authForm;
+	var total = 240;
+	for(i=1;i<16;i++)
+	{
+		var colNM 		= "form.col"+i+"NM.value";
+		var colWidth 	= "form.col"+i+"Width.value";
+		var colListView = "form.col"+i+"ListView.checked";
+		
+		if(eval(colNM) != "" && eval(colWidth) != "" && eval(colListView) == true && !isNaN(eval(colWidth)))
+		{
+			total += parseInt(eval(colWidth));
+		}
+	}
+	form.setListWidth.value = total;
+}
+
+// 게시판 삭제
+function deleteMgt(reqURL)
+{
+	var form = document.authForm;
+	if(confirm("삭제하시겠습니까?"))
+	{
+		form.action = reqURL;
+		form.submit();
+	}
+}
+
+// 댓글 등록
+function regReply(upURL)
+{
+	if(document.boardForm.regID.value == "")
+	{
+		alert("댓글을 등록하시려면 로그인하셔야합니다")
+		return false;
+	}
+	/*
+	if(document.boardForm.subject.value == "")
+	{
+		alert("제목을 입력해주세요");
+		document.boardForm.subject.focus();
+		return false;
+	}
+	*/
+	if(document.boardForm.cnts.value == "")
+	{
+		alert("내용을 입력해 주세요.");
+		document.boardForm.cnts.focus();
+		return false;
+	}
+
+	document.boardForm.action = upURL;
+	document.boardForm.submit();
+}
+
+// 대댓글 등록
+
+$(document).ready(function(){
+	$(document).on('click', '.btn_reply', function(){
+		$(this).parents('.comment_area').find('.write2').remove();
+		$(this).parent().parent('li').append('<div class=\"write2\"><textarea placeholder=\"내용과 무관한 글은 임의로 삭제될 수 있습니다.\"></textarea><a class=\"btn_submit recomment\" href=\"javascript:void(0);\"><span>등록</span></a></div>');
+		$(this).parent().parent('li').find('textArea').focus();
+	});
+	
+	$(document).on('click', '.recomment', function(){
+		if($(this).siblings('textArea').val() == ''){
+			alert('내용을 입력해 주세요.');
+			$(this).siblings('textArea').focus();
+			return;
+		}else{
+			$('.comment_area').css({'opacity': '0.6', 'pointer-events': 'none'});
+			var $me = $(this);
+			$.ajax({
+				method: 'POST',
+				url: '/boardCnts/recommentInsert.do',
+				data: {replySeq: $(this).parent('div').siblings('.replySeq').val(), cnts: $(this).siblings('textArea').val(), boardSeq: $('input[name=boardSeq]').val()},
+				success: function(){
+					var lct = location.href.replaceAll('updateCnt.do', 'view.do');
+					$('.comment_area').load(lct + ' .comment_area > *', function(){
+						$('.comment_area').removeAttr('style');
+					});
+				},
+				error: function(){
+					alert('댓글 등록에 실패했습니다.');
+					$me.parent('div.write2').removeAttr('style');
+				}
+			});
+		}
+	});
+	
+	$(document).on('click', '.delRecomment', function(){
+		if(!confirm('삭제하시겠습니까?')) return;
+
+		$('.comment_area').css({'opacity': '0.6', 'pointer-events': 'none'});
+		
+		var $me2 = $(this);
+		$.ajax({
+			method: 'POST',
+			url: '/boardCnts/recommentDelete.do',
+			data: {seq: $(this).parent('div').parent('li').find('.replySeq').val()},
+			success: function(){
+				$me2.parent().parent('li').slideUp(200, function(){
+					var lct = location.href.replaceAll('updateCnt.do', 'view.do');
+					$('.comment_area').load(lct + ' .comment_area > *', function(){
+						$('.comment_area').removeAttr('style');
+					});
+				})
+			},
+			error: function(){
+				alert('삭제에 실패했습니다.');
+				$me2.parent().parent('li').removeAttr('style');
+			}
+		});
+	});
+});
+
+
+// 댓글 삭제
+function delReply(reqURL, reqSeq)
+{
+	var form = document.boardForm;
+
+	if(confirm("삭제하시겠습니까?"))
+	{
+		form.replySeq.value = reqSeq;
+		form.action = reqURL;
+		form.submit();
+	}
+}
+
+// 게시판 관리에서 컬럼 타입 변경시
+function chgColType(colID, divID)
+{
+	if(document.getElementById(colID).value == 2 || document.getElementById(colID).value == 8 || document.getElementById(colID).value == 9 || document.getElementById(colID).value == 12)
+		document.getElementById(divID).style.display = 'block';
+	else
+		document.getElementById(divID).style.display = 'none';
+}
+
+function CheckEMail (emailStr) 
+{  
+	// 전자메일 패턴. 사용자이름@도메인 의 형식을 검사함  
+	var emailPat=/^(.+)@(.+)$/;
+	// 포함되지 말아야할 특수문자들 ( ) < > @ , ; : \ " . [ ]  
+	var specialChars="\\(\\)<>@,;:\\\\\\\"\\.\\[\\]";  
+	// 포함될 수 있는 특수문자들 (나머지)  
+	var validChars="\[^\\s" + specialChars + "\]";  
+	// 아래의 경우는 사용자 이름에 따옴표가 있는 경우. RFC표준사항임  
+	var quotedUser="(\"[^\"]*\")"; 
+	// 도메인 대신 IP를 사용할 수있음  
+	// 예를 들어 laday@[210.120.253.10]은 올바른 메일 주소 "[", "]"이 반드시 필요 
+	var ipDomainPat=/^\[(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\]$/;  
+	// 기본적인 아토믹에 해당됨  
+	var atom=validChars + '+';  
+	// 사용자로 사용될 수 있는 문자를 나타냄  
+	var word="(" + atom + "|" + quotedUser + ")";  
+	// 사용자의 패턴을 나타냄. 위의 워드가 .단위로 여러개 올 수있음  
+	var userPat=new RegExp("^" + word + "(\\." + word + ")*$");  
+	// 아래의 것은 일반적인 도메인 패턴에 해당됨  
+	var domainPat=new RegExp("^" + atom + "(\\." + atom +")*$");  
+	// @을 기준으로 사용자와 도메인으로 나눔. 편의를 위함  
+	var matchArray=emailStr.match(emailPat);  
+	if (matchArray==null) 
+	{    
+	// 두개 이상 또는 @이 아예 없는 경우   
+		alert("메일주소 형식이 잘못되어 있습니다 (@과 .을 확인해 보세요)");    
+		return false; 
+	}  
+	var user=matchArray[1];  
+	var domain=matchArray[2];  
+	// 사용자 부분이 제대로 되었는지 검사  
+	if (user.match(userPat)==null) 
+	{    
+		alert("메일 아이디가 올바르지 않습니다");    
+		return false;  
+	} 
+	// 도메인 부분이 IP로 되어 있는 경우 
+	var IPArray=domain.match(ipDomainPat);  
+	if (IPArray!=null) 
+	{    
+		for (var i=1;i<=4;i++) 
+		{      
+			if (IPArray[i]>255) 
+			{        
+				alert("IP 주소 형식이 올바르지 않습니다");        
+				return false;      
+			}    
+		}    
+		return true;  
+	}  
+	// 도메인 이름이 심볼릭 네임인 경우 올바르지 않음  
+	var domainArray=domain.match(domainPat);  
+	if (domainArray==null) 
+	{    
+		alert("도메인 형식이 올바르지 않습니다");   
+		return false; 
+	}  
+	// 도메인 형식 검사에 통과했더라도, 마지막 세개 또는 두개의 문자(com, net, kr등등)  
+	// 까지 올바른지 검사. 최상위 도메인은 반드시 세글자 아니면 두 글자임  
+	var atomPat=new RegExp(atom,"g");  
+	var domArr=domain.match(atomPat);  
+	var len=domArr.length;  
+	if (domArr[domArr.length-1].length<2 ||    domArr[domArr.length-1].length>3) 
+	{    
+		alert("도메인 주소의 마지막 필드는 반드시 세글자 도메인 또는 두글자 나라이어야 합니다.");    
+		return false; 
+	}  
+	// 호스트이름이 있는지 검사  
+	if (len<2) 
+	{    
+		alert("호스트 이름이 존재하지 않습니다. 호스트 이름은 반드시 2글자 이상이어야 합니다");    
+		return false;  
+	}  
+	
+	return true;
+}
+
+// 인쇄
+function printView(url)
+{
+	window.open(url, "print", "width=750, height=700, scrollbars=yes");
+}
+
+function openNotice() 
+{
+	var forms = document.boardForm;
+	
+	window.open('','noticePop','width=1024, height=768');
+	forms.target='noticePop';
+	forms.action='/boardCnts/notice.do';
+	forms.submit();
+}
+
+
+
+
+
+//PIC_LINK 이미지 확대 스크립트
+function picLinkImg(title,url)
+{
+	var winW		=	screen.width * 0.6;
+	var winH		=	screen.height * 0.6;
+	
+	var picLink = window.open(title,"이미지확대","width=800,height=700,scrollvars=yes,left=50,top=50");
+	picLink.document.write("<head><title>"+title+"</title></head><div id=\"picLink\" style=\"width:100%;height:100%;margin:0px;padding:0px;\"><a href=\"javascript:close();\" style=\"border:0\" title=\"닫기\"><img src=\""+url+"\" onError=\"this.src='/images/comm/miniList/no_image_list.gif'\" style=\"width:100%;height:100%;margin:0px;padding:0px;\" title=\"클릭 시 창이 닫힙니다.\"/></a></div>");
+}
+
+
+</script>
+
+
+
+		<script language="JavaScript" src="/script/call.js"></script>
+		<LINK href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+		<LINK href="/css/common.css" rel="stylesheet" type="text/css"  media="screen" />
+		<link rel="stylesheet" href="/css/template/common/common_v1.css" media="all"/><!-- 공통 -->
+		<link rel="stylesheet" href="/css/template/common/webfont.css" media="all"/><!-- 공통 -->
+		<link rel="stylesheet" href="/css/template/common/con_com.css" media="all"/><!-- 공통 -->
+		<link rel="stylesheet" href="/css/template/01158/layout.css" media="all"/>
+		<link rel="stylesheet" href="/css/board/board01.css" type="text/css" />
+		<link rel="stylesheet" href="/mobile/css/mobile.css" type="text/css" />
+		<link rel="stylesheet" href="/css/template/01158/sub.css" media="all" />
+		<script src="/css/template/js/jquery.min.js"></script>
+		<script src="/css/template/js/html5shiv.js"></script>
+		<script type="text/javascript" src="/css/template/js/common.js"></script>
+		<script type="text/javascript" src="/css/template/js/sub.js"></script>
+		<title>행정마당 - 학교급식 - 이달의 식단</title>
+	</head>
+	<body>
+		<div class="menu_blind">
+			<ul>
+				<li><a href="#header" title="메뉴 바로가기">메뉴 바로가기</a></li>
+				<li><a href="#wrap" title="본몬내용 바로가기" >본몬내용 바로가기</a></li>
+				<li><a href="#footer_wrap" title="하단링크 바로가기">하단링크 바로가기</a></li>
+			</ul>
+		</div>
+		<div id="wrap">
+			
+
+
+
+
+
+
+
+
+<!-- 메인메뉴 -->
+<div class="area_header2">
+	<header>
+	<h1><a href="/main.do"><img src="/images/template/01158/common/logo.png"  alt="인천포스코고등학교" /></a></h1>
+				<div id="box_search_0" class="box_search_0">
+					<label for="search_option3" class="hid">검색 조건을 선택합니다.</label>
+							 <select class="search" name="search_option3" id="search_option3" onChange="goSearch8();">
+									<option>에듀넷 검색</option>
+								 	<option>홈페이지 검색</option>
+							 </select>
+							<div id="home_search2">
+									<form class="home_search" name="searchForm" method="post">
+										<input type="text" placeholder="검색어를 입력해주세요" id="topSearch_2" name="searchStr" title="검색어를 입력해주세요"/><button onClick="javascript:goSearch9('1');return false;" title="새창이동"><span class="hid">검색</span></button>
+									</form>
+							</div>
+							<div id="edu_search2">		
+									<form class="edu_search" name="siteSearchForm"  id="topSearchForm" method="post">
+											<label for="topSearch_2" class="hid">검색</label>
+											<fieldset>
+											<span class="window"><input type="text" id="kwd" placeholder="검색어를 입력해주세요" name="kwd" autocomplete="on" title="검색어 입력" class="input_text" accesskey="s" style="ime-mode:active;" /></span>
+											<input type="hidden" id="prog_id2" name="prog_id" value="prog_id"/>
+											<input type="hidden" id="mainCallFlag2" name="mainCallFlag" value="y"/>
+											<input type="hidden" id="eb_flag2" name="eb_flag" value="y"/>
+											<input type="hidden" id="svc_version2" name="svc_version" value="2.0"/>
+											<button onClick="javascript:goSearch10('1');return false;"><span></span></button>
+											</fieldset>
+									</form>
+							</div>
+	 				</div>
+	 				
+	 				<script type="text/javascript">
+	 					start_sub();
+	 				</script>
+<a id="btn_inchen" href="http://www.ice.go.kr/" target="_blank" title="교육청바로가기"><img src="/images/template/00000/edu_btn/btn_edu_inchen02.png" alt="인천광역시교육청"/></a>
+<div id="zoomIO">
+	<a href="#zoomIn" onClick="javascript:zoomIn();"><img src="/images/comm/schl/btn_plus.png" alt="확대"/></a>
+	<a href="#zoomInit" onClick="javascript:zoomInit();"><img src="/images/comm/schl/btn_basic.png" alt="기본" /></a>
+	<a href="#zoomOut" onClick="javascript:zoomOut();" ><img src="/images/comm/schl/btn_minus.png" alt="축소"/></a>
+</div>
+	<div class="top_menu" style="top: 17px;">
+		<ul>
+			<!-- 로그인 후 -->
+			
+			
+			
+			<!-- 로그인 전 -->
+			
+				
+					<li><a href="/main.do" title="홈">홈</a></li>
+					<li><a href="https://ptlogin.icemaster.kr/join1.do" title="회원가입">회원가입</a></li>
+					<li><a href="#login" onClick="javascript:goLogin()" title="새창이동">로그인</a></li>
+					<li><a href="#siteMap" onClick="javascript:siteMap()" title="새창이동">사이트맵</a></li>
+					<li><a href="http://www.posef.or.kr/11_news/01.jsp?bid=1" title="새창이동">POSEF 신문고</a></li>
+				
+				
+			
+					<li class="size_set">
+						<a href="#ZoomOut" onClick="zoomOut(); return false;" class="minus">
+							<span class="sr-only">화면 축소</span>
+						</a>
+						<a href="#ZoomIn" onClick="zoomIn(); return false;" class="plus">
+							<span class="sr-only">화면 확대</span>
+						</a>
+					</li>		
+
+		</ul>
+	</div>
+	<hr />
+						<div id="web">
+						<nav id="webNavi">
+							<ul id="gnb">
+								<li class='mNavi'><a href='/sub/info.do?m=0101&s=icpa'  title='학교안내'>학교안내</a>
+									<ul class="box">
+										<li><a href='/sub/info.do?m=0101&s=icpa'  title='Great School, Great Teachers'>Great School, Great Teachers</a></li>
+										<li><a href='/sub/info.do?m=0102&s=icpa'  title='건학이념'>건학이념</a></li>
+										<li><a href='/sub/info.do?m=0109&s=icpa'  title='학교연혁'>학교연혁</a></li>
+										<li><a href='/sub/info.do?m=0103&s=icpa'  title='교훈／교가／상징'>교훈／교가／상징</a></li>
+										<li><a href='/sub/info.do?m=0104&s=icpa'  title='학교현황'>학교현황</a></li>
+										<li><a href='/sub/info.do?m=010604&s=icpa'  title='진학현황'>진학현황</a></li>
+										<li><a href='/sub/info.do?m=0105&s=icpa'  title='교직원소개'>교직원소개</a></li>
+										<li><a href='/sub/info.do?page=0108&m=0108&s=icpa'  title='찾아오시는 길'>찾아오시는 길</a></li>
+									</ul>
+								</li>
+								<li class='mNavi'><a href='/boardCnts/list.do?boardID=287503&amp;m=1009&s=icpa'  title='교육활동'>교육활동</a>
+									<ul class="box">
+										<li><a href='/sub/info.do?m=100901&s=icpa'  title='교육과정'>교육과정</a></li>
+										<li><a href='/sub/info.do?m=1002&s=icpa'  title='진로진학프로그램'>진로진학프로그램</a></li>
+										<li><a href='/sub/info.do?m=1003&s=icpa'  title='특성화프로그램'>특성화프로그램</a></li>
+										<li><a href='/sub/info.do?m=1004&s=icpa'  title='방과후학교'>방과후학교</a></li>
+										<li><a href='/sub/info.do?m=1005&s=icpa'  title='교내대회'>교내대회</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251775&m=1006&s=icpa'  title='수상실적'>수상실적</a></li>
+										<li><a href='/sub/info.do?page=1007&m=1007&s=icpa'  title='글로벌체험학습'>글로벌체험학습</a></li>
+										<li><a href='/sub/info.do?m=1008&s=icpa'  title='진로체험학습'>진로체험학습</a></li>
+									</ul>
+								</li>
+								<li class='mNavi'><a href='/sub/info.do?m=0210&s=icpa'  title='학생마당'>학생마당</a>
+									<ul class="box">
+										<li><a href='/sub/info.do?m=0210&s=icpa'  title='행복한 학교'>행복한 학교</a></li>
+										<li><a href='/sub/info.do?m=020402&s=icpa'  title='동아리활동'>동아리활동</a></li>
+										<li><a href='/sub/info.do?m=021102&amp;s=icpa'  title='학생자치활동'>학생자치활동</a></li>
+										<li><a href='/sub/info.do?m=0207&s=icpa'  title='창의·예술 한마당'>창의·예술 한마당</a></li>
+									</ul>
+								</li>
+								<li class='mNavi'><a href='/sub/info.do?m=0503&s=icpa'  title='입학마당'>입학마당</a>
+									<ul class="box">
+										<li><a href='/sub/info.do?m=0503&s=icpa'  title='입학 문의 안내'>입학 문의 안내</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251807&m=050403&s=icpa'  title='입학자료실'>입학자료실</a></li>
+										<li><a href='/boardCnts/list.do?boardID=304528&m=0501&s=icpa'  title='홍보자료실'>홍보자료실</a></li>
+										<li><a href='/sub/info.do?m=0516&s=icpa'  title='포스코카운슬링＆입학설명회안내'>포스코카운슬링＆입학설명회안내</a></li>
+										<li><a href='/bri/list.do?m=0517&s=icpa'  title='포스코카운슬링 신청'>포스코카운슬링 신청</a></li>
+										<li><a href='/boardCnts/list.do?boardID=302422&m=0520&s=icpa'  title='확진자/자가격리자 응시'>확진자/자가격리자 응시</a></li>
+										<li><a href='https://indd.adobe.com/view/dac3882d-a4e9-43a8-a6fa-0285f34b5dab?m=0522&s=icpa'  title='홍보 브로슈어'>홍보 브로슈어</a></li>
+									</ul>
+								</li>
+								<li class='mNavi'><a href='/boardCnts/list.do?boardID=251821&amp;m=0701&s=icpa'  title='행정마당'>행정마당</a>
+									<ul class="box">
+										<li><a href='/boardCnts/list.do?boardID=251821&m=0701&s=icpa'  title='행정자료'>행정자료</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251823&m=0702&s=icpa'  title='학교회계예결산'>학교회계예결산</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251851&m=070301&s=icpa'  title='학교급식'>학교급식</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251829&m=0705&s=icpa'  title='학교운영위원회'>학교운영위원회</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251895&m=0706&s=icpa'  title='학교발전기금'>학교발전기금</a></li>
+										<li><a href='javascript:chkMenuAuth(2)'  title='영수증 출력'>영수증 출력</a></li>
+										<li><a href='/boardCnts/list.do?boardID=262613&m=0708&s=icpa'  title='학교평가'>학교평가</a></li>
+										<li><a href='/boardCnts/list.do?boardID=280445&amp;m=071001&s=icpa'  title='규정 및 서식'>규정 및 서식</a></li>
+										<li><a href='/boardCnts/list.do?boardID=258361&m=0709&s=icpa'  title='시설정비요청'>시설정비요청</a></li>
+									</ul>
+								</li>
+								<li class='mNavi'><a href='/boardCnts/list.do?boardID=251833&amp;m=0801&s=icpa'  title='열린마당'>열린마당</a>
+									<ul class="box">
+										<li><a href='/boardCnts/list.do?boardID=251833&m=0801&s=icpa'  title='학교공지'>학교공지</a></li>
+										<li><a href='/schdList.do?m=0802&s=icpa'  title='월간일정'>월간일정</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251837&m=0803&s=icpa'  title='가정통신문'>가정통신문</a></li>
+										<li><a href='/boardCnts/list.do?boardID=253149&m=0807&s=icpa'  title='보건소식'>보건소식</a></li>
+										<li><a href='/boardCnts/list.do?boardID=266391&m=0808&s=icpa'  title='언론 속 포스코고'>언론 속 포스코고</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251841&m=0805&s=icpa'  title='포스코고 갤러리'>포스코고 갤러리</a></li>
+										<li><a href='/boardCnts/list.do?boardID=272107&m=0810&s=icpa'  title='포스코고 영상'>포스코고 영상</a></li>
+										<li><a href='/boardCnts/list.do?boardID=286999&m=0811&s=icpa'  title='사이버 신고센터'>사이버 신고센터</a></li>
+										<li><a href='/boardCnts/list.do?boardID=287387&m=0812&s=icpa'  title='성희롱 고충 상담 창구'>성희롱 고충 상담 창구</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					</header>
+				</div>
+<div id="tablet">
+<div id="mNavi">
+<div id="mtitle"><a href="#">메뉴닫기</a></div>
+<nav id="mgnb">
+<div class="snb">
+<ul>
+<li><a href="/main.do">홈</a></li>
+<li><a href="#login" onClick="javascript:goLogin()">로그인</a></li>
+<li><a href="https://ptlogin.icemaster.kr/join1.do" target="_blank">회원가입</a></li>
+</ul>
+</div>
+<ul>
+							<li>
+								<a href='/sub/info.do?m=0101&s=icpa'  class="dep">학교안내</a>
+									<ul>
+										<li><a href='/sub/info.do?m=0101&s=icpa' >Great School, Great Teachers</a></li>
+										<li><a href='/sub/info.do?m=0102&s=icpa' >건학이념</a></li>
+										<li><a href='/sub/info.do?m=0109&s=icpa' >학교연혁</a></li>
+										<li><a href='/sub/info.do?m=0103&s=icpa' >교훈／교가／상징</a></li>
+										<li><a href='/sub/info.do?m=0104&s=icpa' >학교현황</a></li>
+										<li class="row"><a href='/sub/info.do?m=010604&s=icpa' class="dep2">진학현황</a>
+										<ul>
+										<li><a href='/sub/info.do?m=010604&s=icpa' >2022학년도 대학 진학 현황</a></li>
+										<li><a href='/sub/info.do?m=010602&s=icpa' >2021학년도 대학 진학 현황</a></li>
+										<li><a href='/sub/info.do?m=010603&s=icpa' >2020학년도 대학 진학 현황</a></li>
+										<li><a href='/sub/info.do?m=010601&s=icpa' >2019학년도 대학 진학 현황</a></li>
+										</ul>
+										</li>
+										<li><a href='/sub/info.do?m=0105&s=icpa' >교직원소개</a></li>
+										<li><a href='/sub/info.do?page=0108&m=0108&s=icpa' >찾아오시는 길</a></li>
+									</ul>
+							</li>
+							<li>
+								<a href='/boardCnts/list.do?boardID=287503&amp;m=1009&s=icpa'  class="dep">교육활동</a>
+									<ul>
+										<li class="row"><a href='/sub/info.do?m=100901&s=icpa' class="dep2">교육과정</a>
+										<ul>
+										<li><a href='/sub/info.do?m=100901&s=icpa' >교육과정편성특징</a></li>
+										<li><a href='/boardCnts/list.do?boardID=287503&m=100902&s=icpa' >진로집중과정 및 과목 선택 가이드</a></li>
+										</ul>
+										</li>
+										<li><a href='/sub/info.do?m=1002&s=icpa' >진로진학프로그램</a></li>
+										<li><a href='/sub/info.do?m=1003&s=icpa' >특성화프로그램</a></li>
+										<li><a href='/sub/info.do?m=1004&s=icpa' >방과후학교</a></li>
+										<li><a href='/sub/info.do?m=1005&s=icpa' >교내대회</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251775&m=1006&s=icpa' >수상실적</a></li>
+										<li><a href='/sub/info.do?page=1007&m=1007&s=icpa' >글로벌체험학습</a></li>
+										<li><a href='/sub/info.do?m=1008&s=icpa' >진로체험학습</a></li>
+									</ul>
+							</li>
+							<li>
+								<a href='/sub/info.do?m=0210&s=icpa'  class="dep">학생마당</a>
+									<ul>
+										<li><a href='/sub/info.do?m=0210&s=icpa' >행복한 학교</a></li>
+										<li class="row"><a href='/sub/info.do?m=020402&s=icpa' class="dep2">동아리활동</a>
+										<ul>
+										<li><a href='/sub/info.do?m=020402&s=icpa' >메인페이지</a></li>
+										<li><a href='/sub/info.do?m=020403&s=icpa' >정규동아리</a></li>
+										<li><a href='/sub/info.do?m=020405&s=icpa' >스포츠동아리</a></li>
+										<li><a href='/sub/info.do?m=020406&s=icpa' >예술동아리</a></li>
+										<li><a href='/sub/info.do?m=020407&s=icpa' >자율동아리</a></li>
+										</ul>
+										</li>
+										<li class="row"><a href='/sub/info.do?m=021102&amp;s=icpa' class="dep2">학생자치활동</a>
+										<ul>
+										<li><a href='/sub/info.do?m=021102&s=icpa' >학생자치회</a></li>
+										</ul>
+										</li>
+										<li><a href='/sub/info.do?m=0207&s=icpa' >창의·예술 한마당</a></li>
+									</ul>
+							</li>
+							<li>
+								<a href='/sub/info.do?m=0503&s=icpa'  class="dep">입학마당</a>
+									<ul>
+										<li><a href='/sub/info.do?m=0503&s=icpa' >입학 문의 안내</a></li>
+										<li class="row"><a href='/boardCnts/list.do?boardID=251807&m=050403&s=icpa' class="dep2">입학자료실</a>
+										<ul>
+										<li><a href='/boardCnts/list.do?boardID=251807&m=050403&s=icpa' >입학자료실</a></li>
+										<li><a href='/boardCnts/list.do?boardID=288929&m=050402&s=icpa' >전편입안내</a></li>
+										<li><a href='/boardCnts/list.do?boardID=287763&m=050401&s=icpa' >입학요강</a></li>
+										</ul>
+										</li>
+										<li><a href='/boardCnts/list.do?boardID=304528&m=0501&s=icpa' >홍보자료실</a></li>
+										<li><a href='/sub/info.do?m=0516&s=icpa' >포스코카운슬링＆입학설명회안내</a></li>
+										<li><a href='/bri/list.do?m=0517&s=icpa' >포스코카운슬링 신청</a></li>
+										<li><a href='/boardCnts/list.do?boardID=302422&m=0520&s=icpa' >확진자/자가격리자 응시</a></li>
+										<li><a href='https://indd.adobe.com/view/dac3882d-a4e9-43a8-a6fa-0285f34b5dab?m=0522&s=icpa' >홍보 브로슈어</a></li>
+									</ul>
+							</li>
+							<li>
+								<a href='/boardCnts/list.do?boardID=251821&amp;m=0701&s=icpa'  class="dep">행정마당</a>
+									<ul>
+										<li><a href='/boardCnts/list.do?boardID=251821&m=0701&s=icpa' >행정자료</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251823&m=0702&s=icpa' >학교회계예결산</a></li>
+										<li class="row"><a href='/boardCnts/list.do?boardID=251851&m=070301&s=icpa' class="dep2">학교급식</a>
+										<ul>
+										<li><a href='/foodlist.do?m=070306&s=icpa' >이달의 식단</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251851&m=070301&s=icpa' >급식안내</a></li>
+										<li><a href='/boardCnts/list.do?boardID=264241&m=070304&s=icpa' >영양상담 및 Q&A</a></li>
+										<li><a href='https://www.ekape.or.kr/kapecp/ui/kapecp/trust.jsp?searchKeyword=1318216627&m=070307&s=icpa'  target='_blank' >축산물이력번호조회</a></li>
+										<li><a href='http://www.ice.go.kr/sub/info.do?page=0404&m=0404&s=contract'  target='_blank' >계약과정정보공개</a></li>
+										</ul>
+										</li>
+										<li><a href='/boardCnts/list.do?boardID=251829&m=0705&s=icpa' >학교운영위원회</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251895&m=0706&s=icpa' >학교발전기금</a></li>
+										<li><a href='javascript:chkMenuAuth(2)' >영수증 출력</a></li>
+										<li><a href='/boardCnts/list.do?boardID=262613&m=0708&s=icpa' >학교평가</a></li>
+										<li class="row"><a href='/boardCnts/list.do?boardID=280445&amp;m=071001&s=icpa' class="dep2">규정 및 서식</a>
+										<ul>
+										<li><a href='/boardCnts/list.do?boardID=280445&m=071001&s=icpa' >규정</a></li>
+										<li><a href='/boardCnts/list.do?boardID=280447&m=071002&s=icpa' >서식</a></li>
+										</ul>
+										</li>
+										<li><a href='/boardCnts/list.do?boardID=258361&m=0709&s=icpa' >시설정비요청</a></li>
+									</ul>
+							</li>
+							<li>
+								<a href='/boardCnts/list.do?boardID=251833&amp;m=0801&s=icpa'  class="dep">열린마당</a>
+									<ul>
+										<li><a href='/boardCnts/list.do?boardID=251833&m=0801&s=icpa' >학교공지</a></li>
+										<li><a href='/schdList.do?m=0802&s=icpa' >월간일정</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251837&m=0803&s=icpa' >가정통신문</a></li>
+										<li><a href='/boardCnts/list.do?boardID=253149&m=0807&s=icpa' >보건소식</a></li>
+										<li><a href='/boardCnts/list.do?boardID=266391&m=0808&s=icpa' >언론 속 포스코고</a></li>
+										<li><a href='/boardCnts/list.do?boardID=251841&m=0805&s=icpa' >포스코고 갤러리</a></li>
+										<li><a href='/boardCnts/list.do?boardID=272107&m=0810&s=icpa' >포스코고 영상</a></li>
+										<li><a href='/boardCnts/list.do?boardID=286999&m=0811&s=icpa' >사이버 신고센터</a></li>
+										<li><a href='/boardCnts/list.do?boardID=287387&m=0812&s=icpa' >성희롱 고충 상담 창구</a></li>
+									</ul>
+							</li>
+</ul>
+</nav>
+</div>
+<div id="tabletHeader">
+<div id="tabletLogo"><a href="/main.do"><img src="/images/template/01158/common/logo.gif" alt=""/></a></div>
+</div>
+<div id="tabletGnb">
+<div id="menuOpen"><a href="#"><img src="/images/template/01158/common/btn_menu_t.gif" alt="메뉴열기" /></a></div>
+</div>
+<div style="display:none;" class="search_hide">
+<div id="tabletSearch">
+	<div id="searchOpen"><a href="#"><img src="/images/template/01158/common/btn_search_t.png" alt="검색열기"/></a></div>
+</div>
+<div id="mSearch">
+ <div id="edu_search">
+	<form name="searchFormM" id="searchFrm" method="POST">
+	<div class="con">
+		<p>
+		<label for="search_option" class="hid"></label>	    <select name="search_option"  id="search_option" onchange="goSearch5();">		 <option selected="selected">홈페이지 검색</option>		 <option>에듀넷 검색</option>		</select>			<input type="text" id="topSearch_1" name="searchStr" class="inputText" title="통합 검색어" placeholder="검색어를 입력해주세요" style="ime-mode:active;"/>
+			<button class="btnSearch" id="searchTextBtn" onClick="javascript:goSearch4();return false;"><span>검색</span></button>
+		</p>
+		<button class="btnSearchClose" type="button"><span>통합검색 닫기</span></button>
+	</div>
+	</form>
+	<form style="display:none" class="edu_search" name="siteSearchFormM" id="searchFrm2" method="POST">
+	<div class="con">
+	<p>
+		<label for="search_option2" class="hid"></label>		<select name="search_option2" id="search_option2" onchange="goSearch6();">		 <option>홈페이지 검색</option>		 <option selected="selected">에듀넷 검색</option>		</select>		<input type="text" class="inputText" id="topSearch" placeholder="검색어를 입력해주세요" name="kwd" autocomplete="on" title="검색어 입력" tabindex="1" accesskey="s" style="ime-mode:active;" />		 <input type="hidden" id="prog_id" name="prog_id" value="prog_id"/>
+		 <input type="hidden" id="mainCallFlag" name="mainCallFlag" value="y"/>		 <input type="hidden" id="eb_flag" name="eb_flag" value="y"/>		 <input type="hidden" id="svc_version" name="svc_version" value="2.0"/>			<button onClick="javascript:goSearch7();return false;" class="btnSearch" id="searchTextBtn2"><span>검색</span></button>
+	</p>
+	<button class="btnSearchClose" type="button"><span>통합검색 닫기</span></button>
+	</div>
+	</form>
+ </div>
+</div>
+</div></div>
+
+<hr />
+<!-- /메인메뉴끝 -->
+
+
+			
+			<div class="box_mot_1"> 
+				<div id="sub_container">
+					<div class="S_visual">
+						<p><img src="/images/template/01158/sub/S_visual.jpg" alt="슬기롭고 정의로우며, 튼튼하게 자라나는 어린이 인천초등학교"/></p>
+					</div>					
+					<div class="sub_content">
+						
+
+
+
+
+
+<!-- 왼쪽메뉴시작 -->
+	<section id="sideContent2">
+		<!--img src="/images/template/01158/sub/left_menu_top.gif"  alt="인천포스코고등학교" /-->
+			<h1>행정마당</h1>
+	<nav class="sideNavi">
+<ul id='left_menu' >
+<li>
+	<a href='/boardCnts/list.do?boardID=251821&m=0701&s=icpa' title='행정자료' >
+<span class="depth0">행정자료</span></a>
+</li>
+<li>
+	<a href='/boardCnts/list.do?boardID=251823&m=0702&s=icpa' title='학교회계예결산' >
+<span class="depth0">학교회계예결산</span></a>
+</li>
+<li>
+	<a href='#moveTab' onClick=" javascript:leftMenuView(113);return false; " onKeyPress='' title='학교급식' >
+<span class="depth0_dep_on">학교급식</span></a>
+	<ul id='LMenu113' class='lock'>
+<li>
+	<a href='/foodlist.do?m=070306&s=icpa' title='이달의 식단' >
+<span class="depth1_on">이달의 식단</span></a>
+</li>
+<li>
+	<a href='/boardCnts/list.do?boardID=251851&m=070301&s=icpa' title='급식안내' >
+<span class="depth1">급식안내</span></a>
+</li>
+<li>
+	<a href='/boardCnts/list.do?boardID=264241&m=070304&s=icpa' title='영양상담 및 Q&A' >
+<span class="depth1">영양상담 및 Q&A</span></a>
+</li>
+<li>
+ <a href='https://www.ekape.or.kr/kapecp/ui/kapecp/trust.jsp?searchKeyword=1318216627&m=070307&s=icpa' target='_blank' title='축산물이력번호조회(새창)' >
+<span class="depth1">축산물이력번호조회</span></a>
+</li>
+<li>
+ <a href='http://www.ice.go.kr/sub/info.do?page=0404&m=0404&s=contract' target='_blank' title='계약과정정보공개(새창)' >
+<span class="depth1">계약과정정보공개</span></a>
+</li>
+  </ul>
+</li>
+<li>
+	<a href='/boardCnts/list.do?boardID=251829&m=0705&s=icpa' title='학교운영위원회' >
+<span class="depth0">학교운영위원회</span></a>
+</li>
+<li>
+	<a href='/boardCnts/list.do?boardID=251895&m=0706&s=icpa' title='학교발전기금' >
+<span class="depth0">학교발전기금</span></a>
+</li>
+<li>
+	<a href='javascript:chkMenuAuth(2)' title='영수증 출력' >
+<span class="depth0">영수증 출력</span></a>
+</li>
+<li>
+	<a href='/boardCnts/list.do?boardID=262613&m=0708&s=icpa' title='학교평가' >
+<span class="depth0">학교평가</span></a>
+</li>
+<li>
+	<a href='#moveTab' onClick=" javascript:leftMenuView(118);return false; " onKeyPress='' title='규정 및 서식' >
+<span class="depth0_dep">규정 및 서식</span></a>
+	<ul id='LMenu118' class='lock'>
+<li>
+	<a href='/boardCnts/list.do?boardID=280445&m=071001&s=icpa' title='규정' >
+<span class="depth1">규정</span></a>
+</li>
+<li>
+	<a href='/boardCnts/list.do?boardID=280447&m=071002&s=icpa' title='서식' >
+<span class="depth1">서식</span></a>
+</li>
+  </ul>
+</li>
+<li>
+	<a href='/boardCnts/list.do?boardID=258361&m=0709&s=icpa' title='시설정비요청' >
+<span class="depth0">시설정비요청</span></a>
+</li>
+</ul>
+</nav>
+<script>leftMenuView(113);</script>
+		<!--img src="/images/template/01158/sub/left_menu_bot.gif"  alt="인천포스코고등학교" /-->
+	</section>
+<!--/왼쪽메뉴끝-->
+
+	
+						<section id="subContent">
+							
+
+
+
+
+
+<p id="location"><a href="/main.do" title="홈"><img src="/images/template/01158/sub/icoHome.gif" alt="메인페이지"/></a> > <a href='/boardCnts/list.do?boardID=251821&amp;m=0701&s=icpa'>행정마당</a> > <a href='/boardCnts/list.do?boardID=251851&m=070301&s=icpa'>학교급식</a> > <a href='/foodlist.do?m=070306&s=icpa'>이달의 식단</a></p>
+							<hr/>
+							<div class="subContent_body">  
+								<div class="snsBox2">
+									<button type="button" class="btnZoomIn" onClick="zoomIn();return false;" onkeypress="" title="확대"><span>확대</span></button>
+									<button type="button" class="btnZoomOut" onClick="zoomOut();return false;" onkeypress="" title="축소"><span>축소</span></button>
+									<button type="button" class="btnPrint" onClick="goPrint();return false;" onkeypress="" title="프린트"><span>인쇄</span></button>
+								</div>
+								<h2 id="pageTitle">이달의 식단</h2>
+	                               <div>
+	                               	<div class="hr"></div>
+									<div id="all-scroll">
+										<div class="page">
+	                                       
+
+
+
+
+
+
+
+<LINK href="/addon/foodList/css/schedule/schedule.css" rel="stylesheet" type="text/css" media="screen"/>
+<LINK href="/addon/foodList/css/sub.css" rel="stylesheet" type="text/css" media="screen"/>
+
+<style>
+	.cal_sun a {
+		color : red;
+	}
+	
+	.cal_sat a {
+		color : blue;
+	}
+	
+	/*.today a {
+		color : orange;
+	}*/
+	
+	.boxTab ul {
+		float:right;
+	}
+	
+</style>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$(".foodT").each(function(){
+			if($(this).attr("id") == "L") $(this).attr("class", "on");
+		});	
+		$(".cal").each(function(){
+			if($(this).attr("id") == "") $(this).attr("class", "on");
+		});
+		if("D" == "B ") {
+			$("#breakfast").attr("checked", "checked");
+		}
+		else if("D" == "L ") {
+			$("#dinner").attr("checked", "checked");
+		}
+		else if("D" == "A ") {
+			$("#dinner").attr("checked", "checked");
+			$("#breakfast").attr("checked", "checked");
+ 		}
+		
+		hideDeleteByTheMonth();
+		hideInsertAllFoodData();
+		hideNeisCrawData();
+	});
+	
+	//이전달
+	function goPrevMonth(reqYear, reqMonth) {
+		var forms = document.foodListFrm;
+		forms.target = "";
+		
+		var calYear = Number(reqYear);
+		var calMonth = Number(reqMonth);
+		
+		//1월 일 경우 전년도로 넘어가면서 12월로 바꿔준다.
+		if(calMonth == 1){
+			calYear  = calYear-1;
+			calMonth = 12;
+		}else{
+			calMonth = calMonth-1;
+		}
+		
+		//한 자릿수 월 일 경우 앞에 0을 붙여준다.
+		if(calMonth < 10){
+			calMonth = "0"+calMonth;
+		}else{
+			calMonth = ""+calMonth;
+		}
+		
+		forms.year.value  = calYear;
+		forms.month.value = calMonth;
+		
+		location.href = "/foodlist.do?year=" + calYear + "&month=" + calMonth + "&m=070306&s=icpa";
+
+	}
+	
+	//다음달
+	function goNextMonth(reqYear, reqMonth) {
+		var forms = document.foodListFrm;
+		forms.target = "";
+		var calYear = Number(reqYear);
+		var calMonth = Number(reqMonth);
+		
+		//12월 일 경우 다음년도로 넘어가면서 1월로 바꿔준다.
+		if(calMonth == 12){
+			calYear  = calYear+1;
+			calMonth = 1;
+		}else{
+			calMonth = calMonth+1;
+		}
+		
+		//한 자릿수 월 일 경우 앞에 0을 붙여준다.
+		if(calMonth < 10){
+			calMonth = "0"+calMonth;
+		}else{
+			calMonth = ""+calMonth;
+		}
+		
+		forms.year.value  = calYear;
+		forms.month.value = calMonth;
+		
+		location.href = "/foodlist.do?year=" + calYear + "&month=" + calMonth + "&m=070306&s=icpa";
+	}
+	
+	// 식단 클릭시 액션 판단
+	function judgeMentAction(division, dayVal) {
+		var forms = document.foodListFrm;
+	    forms.day.value=dayVal;
+	    window.open('', 'foodPop','width=550px, height=750px, scrollbars=yes');
+	    
+		if(division == "ins") { //신규등록
+			forms.action = "/sFoodList/popup/insFrm.do";
+			forms.target = "foodPop";
+			forms.method = "post";
+			forms.submit();
+			return;
+		}else { //조회
+			if(forms.foodType.value=="B"){
+				var type = "breakfast";
+			}else if(forms.foodType.value=="L"){
+				var type = "lunch";
+			}else if(forms.foodType.value=="D"){
+				var type = "dinner";
+			}
+			forms.type.value =  type;
+			if('070306'=='020507' && 'icpa' == 'gonghang_e'){
+				forms.action = "/gonghang_e_bun/food/"+forms.year.value+"/"+forms.month.value+"/"+dayVal+"/"+type+".do";
+			}else{
+				forms.action = "/icpa/food/"+forms.year.value+"/"+forms.month.value+"/"+dayVal+"/"+type+".do";
+			}
+			forms.target = "foodPop";
+			forms.method = "post";
+			forms.submit();
+		}
+	}
+	
+	function chgTab(foodType) {
+		document.foodListFrm.foodType.value=foodType;
+	    document.foodListFrm.target = "_self";
+		document.foodListFrm.action = "/foodlist.do?m=070306&s=icpa";
+		document.foodListFrm.submit();
+	}
+	
+	function addTap() {
+		var cnt = 0;
+	
+		for (var i = 0; i<2; i++){
+			if(document.foodListFrm.chkVal[i].checked == true){
+				cnt++;
+				document.foodListFrm.selType.value = document.foodListFrm.chkVal[i].value;
+			}
+		}
+		if(cnt == 2) {
+			document.foodListFrm.selType.value = "A";
+		}else if(cnt == 0){
+			document.foodListFrm.selType.value = "N";
+		}
+		
+		document.foodListFrm.action = "/foodSelType.do";
+		document.foodListFrm.submit();
+	}
+	
+	var delCalCnt = 0;
+	function deleteByTheMonth() {
+		var html = "<table summary='등록된 식단 데이터 삭제' class='data'><caption>등록된 식단 데이터를 제거합니다.</caption><tr><th colspan='12' style='text-align: center !important;'><font size='4px !important;'>삭제 월 선택</font></th></tr><tr style='text-align: left;'><td colspan='12'>";
+		if(delCalCnt == 0) {
+			 html +="<input type='radio' value='0' name='delCal'> 전체&nbsp</td></tr><tr style='text-align: center;'>";
+			for(var i=1; i<=12; i++) {
+				html += "<td><input type='radio' value='" + i + "' name='delCal'> " + i + "월 &nbsp</td>"; 
+			}
+			html += "<tr><td  colspan='12'> 현재 년도의 데이터만 삭제됩니다. 다른 년도의 데이터는 지원센터에 문의 부탁드립니다.</td></tr>";
+			html += "</tr></table>";
+			$("#delDiv").html(html);
+		}
+		$("#deleteByTheMonth_Area").show();
+		delCalCnt ++;
+	}
+	
+	var insertFoodCnt = 0;
+	function insertAllFoodData() {
+		$("#insertAllFoodData_Area").show();
+	}
+	
+	function neisCraw() {
+		$("#neisCraw_Area").show();
+	}
+	
+	var selectAllFlag = false;
+	function selAll(){
+		if(selectAllFlag) {
+			selectAllFlag =false;
+			$("input[name='delCal']").prop("checked", false); 
+			return;
+		}
+		$("input[name='delCal']").prop("checked", true);
+		selectAllFlag = true;
+	}
+	
+	function hideDeleteByTheMonth() {
+		$("#deleteByTheMonth_Area").hide();
+	}
+	
+	function hideInsertAllFoodData() {
+		$("#insertAllFoodData_Area").hide();
+	}
+	
+	function hideNeisCrawData() {
+		$("#neisCraw_Area").hide();
+	}
+	
+	function insertFoodData() {
+		var forms = document.foodListFrm;
+		
+		if(!forms.file1Path.value){
+			alert("첨부된 파일이 없습니다.");
+			return;
+		}
+		
+		var sel = document.getElementById("selMonth");
+		var selMonth = sel.options[sel.selectedIndex].value;
+		
+		var url = document.location.href.split('=');
+		var mp = url[1].split('&');
+		
+		if(!confirm("선택하신 "+selMonth+"월의 식단 사진을 포함한 식단 정보는 삭제되고 신규로 등록됩니다.\n계속하시겠습니까?")) {
+			return;
+		}
+		
+		var mp0 = mp[0];
+		mp0 = mp0.replaceAll("<","&lt;");
+		mp0 = mp0.replaceAll(">","&gt;");
+
+		forms.action = "/insFoodExcel.do?m="+ mp0;
+		forms.submit();
+	}
+	
+	function goFoodExcel() {
+		if(!confirm("엑셀전환 하시겠습니까?")) {
+			return;
+		}
+		
+		document.foodListFrm.action = "/goFoodExcel.do";
+		document.foodListFrm.submit();
+	}
+	
+	function addAllInfo(){
+		document.foodListFrm.action = "/foodAllergyInfo.do";
+		document.foodListFrm.submit();
+	}
+	
+	function deleteFoodData() {
+		var chkFlag = false;
+		size = document.foodListFrm.delCal.length;
+		
+		for(var i = 0; i < size ; i++){
+			if(document.foodListFrm.delCal[i].checked){
+				document.foodListFrm.delm.value = document.foodListFrm.delCal[i].value;
+				chkFlag = true;
+				break;
+			}
+		}
+		
+		if(chkFlag) {
+			if(confirm("정말 삭제하시겠습니까?")) {
+				document.foodListFrm.action = "/delFoodData.do";
+				document.foodListFrm.submit();
+			}
+			return;
+		}
+		
+		alert("선택된 월이 없습니다.");
+	}
+	
+	function neisCrawData(mnid) {
+		document.getElementById("waitHid").style.display = "none";
+		var waitText = document.getElementById("waitText");
+		waitText.innerHTML = "<p class='btn_blue' style='width:250px;'>안내창이 뜰 때까지 기다려주세요.</p>";
+		var forms = document.foodCrawFrm;
+		var strYear = forms.year.value;
+		var strMonth = forms.month.value;
+		
+		if(!confirm(strYear+"년 "+strMonth+"월의 식단 사진을 포함한 식단일정은 사라지고,\n신규 식단일정이 크롤링 됩니다. 실행하시겠습니까?")) {
+			waitText.innerHTML="";
+			document.getElementById("waitHid").style.display = "";
+			return;
+		}
+		
+		forms.action = "/food/schoolcraw.do?m=" + mnid;
+		forms.submit();
+		
+	}
+	
+	function uploadChange(file) {
+		if(100*1024*1024 < file.files[0].size){
+			alert("최대 용량을 초과하였습니다.");
+			file.outerHTML=file.outerHTML;
+			return;
+		}
+				
+		var extArry = file.files[0].name.split(".");			
+		var ext = extArry[extArry.length-1].toLowerCase();
+
+		if(ext != "txt"){
+			alert("확장자가 txt인 파일만 첨부할 수 있습니다.");
+			file.outerHTML=file.outerHTML;
+			return;
+		}
+	}
+</script>
+
+<form name="foodListFrm" commandName="FoodListVO" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="year" value="2022"/>
+	<input type="hidden" name="month" value="05"/>
+	<input type="hidden" name="day" value="" /> 
+	<input type="hidden" name="foodType" value="L" /> 
+	<input type="hidden" name="delm" />
+	<input type="hidden" name="type" />
+	<input type="hidden" name="selType" value="D" />
+	
+	
+	
+	
+	<div class="calendar_txt" style="height : 60px" >
+		<p style = "font-size:15px"><strong> * 식단 내용 클릭 시 사진 등 상세보기가 가능합니다. </strong></p>
+	</div>
+	
+	<br />
+	<nav class="boxTab" style="padding-right:5px;">
+        <ul>
+	        <li><a href="/foodlist.do?m=070306&s=icpa" class="on" id ="M" >월별</a></li>
+            <li><a href="/foodWlist.do?m=070306&s=icpa" id ="W" >주별</a></li>
+        </ul>
+    </nav>	
+
+	<nav class="boxTab" style="padding-right:5px;">
+        <ul>
+			
+			<li><a href="javascript:chgTab('L');" id ="L" class="foodT">중식</a></li>
+			<li><a href="javascript:chgTab('D');" id ="D" class="foodT">석식</a></li>
+        </ul>
+    </nav>
+    <br/>
+	<div id="con_body">
+		<!-- 달력 출력 -->	
+		<div class="calendar_top">
+	<p>
+		<a href="javascript:goPrevMonth('2022','5');" class="btn_calendar_prev"><img src="/addon/foodList/images/btn_calendar_prev.gif" alt="이전 달"/></a>
+		2022.05
+		<a href="javascript:goNextMonth('2022','5');" class="btn_calendar_next"><img src="/addon/foodList/images/btn_calendar_next.gif" alt="다음 달"/></a>
+	</p>
+</div>
+
+<!-- PC -->
+<div class="tb_base_box web_box">
+	<table class="tb_calendar">
+		<caption>
+			<span>월별 중식 일정</span>
+			<details class="hidden">
+				<summary>월별 중식 일정 테이블입니다. 해당 일정을 클릭하시면 자세한 내용을 확인하실 수 있습니다.</summary>
+			</details>
+		</caption>
+		<colgroup>
+			<col style="width:15%;"/>
+			<col span="5" style="width:14%;"/>
+			<col style="width:15%;"/>
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col"><span class="pc_red">일</span></th>
+				<th scope="col">월</th>
+				<th scope="col">화</th>
+				<th scope="col">수</th>
+				<th scope="col">목</th>
+				<th scope="col">금</th>
+				<th scope="col"><span class="pc_blue">토</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="cal_sun">1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td class="cal_sat">7</td>
+			</tr>
+			<tr>
+				<td class="cal_sun">8</td>
+				<td style="cursor: pointer;">9
+					<a title="9일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 9);"><ul>
+참나물겉절이 5.6.13.<br />수제닭가슴살커틀릿1.2.5.6.13.15. 이력번호222050600101<br />멕시컨커틀릿소스5.6.12.13.16.<br />혼합잡곡친환경밥5.<br />소고기미역국5.6.9.16.<br />배추김치9.<br />깨소스생선구이+오리엔탈소스5.6.13.<br />
+ <br /> * 에너지 : 710.2/단백질 : 44.4/칼슘 : 227.3/철 : 4					</ul></a>
+				</td>
+				<td style="cursor: pointer;">10
+					<a title="10일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 10);"><ul>
+꼬치어묵국1.2.5.6.7.9.13.18.<br />(수제)돈등심탕수육1.2.5.6.10.12.13.16.18.<br />탕수육소스(간장소스)5.6.13.<br />(수제)매실차13.<br />단무지<br />깍두기9.<br />비빔쫄면(탕)1.5.6.10.13.16.18.<br />친환경쌀밥-자율<br />
+ <br /> * 에너지 : 1036.6/단백질 : 59/칼슘 : 300.5/철 : 4.8					</ul></a>
+				</td>
+				<td style="cursor: pointer;">11
+					<a title="11일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 11);"><ul>
+미니케찹(일회용)<br />미닛메이트음료(오렌지맛)13.<br />수제갈비살블랙버거1.2.5.6.10.12.13.15.16.18.<br />매실오이지무침 13.<br /> 감자튀김(케찹소스_5.6.12.<br />깍두기9.<br /> 닭죽 (식판)13.15.<br />친환경쌀밥-적은 양<br />
+ <br /> * 에너지 : 977.4/단백질 : 42.2/칼슘 : 163.5/철 : 6.9					</ul></a>
+				</td>
+				<td style="cursor: pointer;">12
+					<a title="12일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 12);"><ul>
+간장달걀밥1.5.6.13.<br />탄탄멘(국)1.2.5.6.10.13.15.16.18.<br />1(수제)로투스비스코프생크림케1.2.5.6.13.<br />배추김치9.<br />친환경쌀밥<br />(수제)자몽에이드13.( 당일 업체 실수로 망고음료+레몬에이드 제공)<br />
+ <br /> * 에너지 : 1038.4/단백질 : 35.1/칼슘 : 163.5/철 : 4.2					</ul></a>
+				</td>
+				<td style="cursor: pointer;">13
+					<a title="13일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 13);"><ul>
+수제)날치알스팸마리김밥(1/2)1.2.5.6.10.13.15.16.<br />야채크림스프2.5.6.10.12.13.16.<br />oV.돈토마호크스테이크(250)10.<br />깍두기9.<br />카프리썬음료11.12.<br />오이피클<br />친환경쌀밥-적은 양<br />
+ <br /> * 에너지 : 1348.8/단백질 : 65.8/칼슘 : 164.4/철 : 4.7					</ul></a>
+				</td>
+				<td class="cal_sat">14</td>
+			</tr>
+			<tr>
+				<td class="cal_sun">15</td>
+				<td style="cursor: pointer;">16
+					<a title="16일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 16);"><ul>
+기장친환경쌀밥<br />감자호박찌개5.6.9.12.13.<br />비빔막국수1.3.5.6.13.18.<br />돼지고기수육5.6.10.13.<br />야채쌈 5.6.13.<br />쌈장5.6.<br />배추김치9.<br />뽕따카카오아이스크림1.2.5.<br />
+ <br /> * 에너지 : 1203.9/단백질 : 66.8/칼슘 : 443.3/철 : 13.3					</ul></a>
+				</td>
+				<td style="cursor: pointer;">17
+					<a title="17일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 17);"><ul>
+검정친환경쌀밥<br />OV.오지치즈후라이2.5.10.<br />런천미트햄구이(슬)1.2.5.6.10.12.15.16.<br />깻잎장아찌 <br />깍두기9.<br />미니케찹(일회용)12.<br />닭개장5.9.13.15.이력번호 2220050700401<br />
+ <br /> * 에너지 : 1094.3/단백질 : 52.2/칼슘 : 456.5/철 : 5.5					</ul></a>
+				</td>
+				<td style="cursor: pointer;">18
+					<a title="18일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 18);"><ul>
+김밥볶음밥(철판)-작은곳1.2.5.6.8.10.15.16.<br />국물떡볶이1.5.6.12.13.<br />스틱단무지<br />배추김치9.<br />어묵무국1.5.6.9.<br />아이스크림바-죠크바1.2.5.<br />친환경쌀밥-적은 양<br />큐브감자핫도그1.2.5.6.12.13.18.<br />
+ <br /> * 에너지 : 1232.3/단백질 : 41/칼슘 : 511.4/철 : 5.4					</ul></a>
+				</td>
+				<td style="cursor: pointer;">19
+					<a title="19일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 19);"><ul>
+김치콩나물밥5.6.9.10.16.<br />간장양념장5.6.18.<br />아욱된장국5.6.9.<br />순살대구살강정4.5.6.12.13.<br />깍두기9.<br />(수제)복숭아아이스티11.<br />친환경쌀밥<br />우리밀타코야끼꼬치1.2.5.6.10.13.15.16.18.<br />
+ <br /> * 에너지 : 892.8/단백질 : 39.1/칼슘 : 374.7/철 : 5.6					</ul></a>
+				</td>
+				<td style="cursor: pointer;">20
+					<a title="20일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 20);"><ul>
+김치말이국수(탕)1.5.6.9.16.18.<br />(수제)삼각김밥-(비빔약고추장)5.6.10.<br />배추김치9.<br />친환경쌀밥-자율<br />생야채겉절이 5.6.13.<br />수제)닭봉맛쵸킹5.6.13.15.이력번호222051600101<br />
+ <br /> * 에너지 : 1078.3/단백질 : 54.7/칼슘 : 375.8/철 : 8.4					</ul></a>
+				</td>
+				<td class="cal_sat">21</td>
+			</tr>
+			<tr>
+				<td class="cal_sun">22</td>
+				<td style="cursor: pointer;">23
+					<a title="23일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 23);"><ul>
+나가사끼짬뽕(탕) 5.6.9.13.15.17.18.<br />친환경쌀밥-자율<br />치즈와플+생크림1.2.5.6.<br />배추김치9.<br />단무지(부추)-우동날<br />저당요구르트2.<br />
+ <br /> * 에너지 : 770.7/단백질 : 26.5/칼슘 : 255.3/철 : 5.3					</ul></a>
+				</td>
+				<td style="cursor: pointer;">24
+					<a title="24일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 24);"><ul>
+하이라이스덮밥1.2.5.6.10.12.13.16.<br />시원메밀소바-3.5.6.7.13.18.<br />OV. 명랑우리쌀핫도그/소스1.2.5.6.10.12.13.15.18.<br />설레임(아이스)1.2.5.<br />배추김치9.<br />친환경쌀밥<br />매실오이지무침 13.<br />
+ <br /> * 에너지 : 1319.8/단백질 : 40.5/칼슘 : 387.9/철 : 4.6					</ul></a>
+				</td>
+				<td style="cursor: pointer;">25
+					<a title="25일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 25);"><ul>
+쌀밥<br />물냉면(탕)-삼겹후식용1.3.5.6.13.16.<br />OV.삼겹살데리야끼구이5.6.10.13.<br />배추김치9.<br />쌈장5.6.<br />야채쌈 5.6.13.<br />
+ <br /> * 에너지 : 1045.3/단백질 : 41.5/칼슘 : 47.3/철 : 3.4					</ul></a>
+				</td>
+				<td style="cursor: pointer;">26
+					<a title="26일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 26);"><ul>
+김치철판볶음밥(날치알)1.2.5.6.8.9.10.13.15.16.18.<br />(수제)바나나킥블라스트1.2.5.6.13.<br />배추김치9.<br />팽이버섯된장국5.6.9.<br />썬키스트음료-머스캣13.<br />OV.미니크루와상오븐구이1.2.5.6.<br />버터(개별)2.<br />친환경쌀밥<br />
+ <br /> * 에너지 : 1048.2/단백질 : 27.9/칼슘 : 333.7/철 : 4.7					</ul></a>
+				</td>
+				<td style="cursor: pointer;">27
+					<a title="27일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 27);"><ul>
+수제참치김밥(1/2개)1.2.5.6.10.13.<br />해물짬뽕(탕)5.6.8.9.10.13.15.16.17.18.<br />배추김치9.<br />단무지<br />유기농쌀식혜<br />찹쌀꿀약과1.5.6.<br />친환경쌀밥-적은 양<br />
+ <br /> * 에너지 : 1081.7/단백질 : 44.1/칼슘 : 330.9/철 : 11.6					</ul></a>
+				</td>
+				<td class="cal_sat">28</td>
+			</tr>
+			<tr>
+				<td class="cal_sun">29</td>
+				<td style="cursor: pointer;">30
+					<a title="30일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 30);"><ul>
+퀴노아잡곡친환경쌀밥5.<br />순두부바지락찌개1.5.6.9.13.18.<br />파채간장불고기2.5.6.10.13.18.<br />미역줄기팽이버섯볶음1.5.6.<br />배추김치9.<br />불고기왕꼬치핫바2.5.6.10.15.16.<br />
+ <br /> * 에너지 : 961.6/단백질 : 68/칼슘 : 328/철 : 8.7					</ul></a>
+				</td>
+				<td class="today" style="cursor: pointer;">31
+					<a title="31일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 31);"><ul>
+검정친환경쌀밥<br />스팸햄김치찌개1.2.5.6.9.10.12.13.15.16.<br />안동찜닭5.6.8.12.13.15.18.<br />깍두기9.<br />숙주부추나물 5.6.13.16.18.<br />구이김<br />
+ <br /> * 에너지 : 1033.2/단백질 : 63.1/칼슘 : 262.4/철 : 6.4					</ul></a>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="cal_sat"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<!-- //PC -->
+
+<!-- 모바일, 태블릿 -->
+<div class="tb_base_box tm_box">
+	<table class="tb_calendar">
+		<caption>
+			<span>월별 중식 일정</span>
+			<details class="hidden">
+				<summary>월별 중식 일정 테이블입니다. 해당 일정을 클릭하시면 자세한 내용을 확인하실 수 있습니다.</summary>
+			</details>
+		</caption>
+		<colgroup>
+			<col style="width:15%;"/>
+			<col style="width:85%;"/>
+		</colgroup>
+		<tbody>
+			<tr>
+				<th scope="row" class="cal_sun"><span class="pc_red">1 일</span></th>
+				<td class="cal_sun" style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row"><span>2 일</span></th>
+				<td style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row"><span>3 일</span></th>
+				<td style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row"><span>4 일</span></th>
+				<td style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row"><span>5 일</span></th>
+				<td style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row"><span>6 일</span></th>
+				<td style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row" class="cal_sat"><span class="pc_blue">7 일</span></th>
+				<td class="cal_sat" style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row" class="cal_sun"><span class="pc_red">8 일</span></th>
+				<td class="cal_sun" style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row"><span>9 일</span></th>
+				<td style="cursor: pointer;"><a title="9일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 9);">　
+					<ul>
+참나물겉절이 5.6.13.<br />수제닭가슴살커틀릿1.2.5.6.13.15. 이력번호222050600101<br />멕시컨커틀릿소스5.6.12.13.16.<br />혼합잡곡친환경밥5.<br />소고기미역국5.6.9.16.<br />배추김치9.<br />깨소스생선구이+오리엔탈소스5.6.13.<br />
+ <br /> * 에너지 : 710.2/단백질 : 44.4/칼슘 : 227.3/철 : 4					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>10 일</span></th>
+				<td style="cursor: pointer;"><a title="10일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 10);">　
+					<ul>
+꼬치어묵국1.2.5.6.7.9.13.18.<br />(수제)돈등심탕수육1.2.5.6.10.12.13.16.18.<br />탕수육소스(간장소스)5.6.13.<br />(수제)매실차13.<br />단무지<br />깍두기9.<br />비빔쫄면(탕)1.5.6.10.13.16.18.<br />친환경쌀밥-자율<br />
+ <br /> * 에너지 : 1036.6/단백질 : 59/칼슘 : 300.5/철 : 4.8					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>11 일</span></th>
+				<td style="cursor: pointer;"><a title="11일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 11);">　
+					<ul>
+미니케찹(일회용)<br />미닛메이트음료(오렌지맛)13.<br />수제갈비살블랙버거1.2.5.6.10.12.13.15.16.18.<br />매실오이지무침 13.<br /> 감자튀김(케찹소스_5.6.12.<br />깍두기9.<br /> 닭죽 (식판)13.15.<br />친환경쌀밥-적은 양<br />
+ <br /> * 에너지 : 977.4/단백질 : 42.2/칼슘 : 163.5/철 : 6.9					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>12 일</span></th>
+				<td style="cursor: pointer;"><a title="12일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 12);">　
+					<ul>
+간장달걀밥1.5.6.13.<br />탄탄멘(국)1.2.5.6.10.13.15.16.18.<br />1(수제)로투스비스코프생크림케1.2.5.6.13.<br />배추김치9.<br />친환경쌀밥<br />(수제)자몽에이드13.( 당일 업체 실수로 망고음료+레몬에이드 제공)<br />
+ <br /> * 에너지 : 1038.4/단백질 : 35.1/칼슘 : 163.5/철 : 4.2					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>13 일</span></th>
+				<td style="cursor: pointer;"><a title="13일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 13);">　
+					<ul>
+수제)날치알스팸마리김밥(1/2)1.2.5.6.10.13.15.16.<br />야채크림스프2.5.6.10.12.13.16.<br />oV.돈토마호크스테이크(250)10.<br />깍두기9.<br />카프리썬음료11.12.<br />오이피클<br />친환경쌀밥-적은 양<br />
+ <br /> * 에너지 : 1348.8/단백질 : 65.8/칼슘 : 164.4/철 : 4.7					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="cal_sat"><span class="pc_blue">14 일</span></th>
+				<td class="cal_sat" style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row" class="cal_sun"><span class="pc_red">15 일</span></th>
+				<td class="cal_sun" style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row"><span>16 일</span></th>
+				<td style="cursor: pointer;"><a title="16일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 16);">　
+					<ul>
+기장친환경쌀밥<br />감자호박찌개5.6.9.12.13.<br />비빔막국수1.3.5.6.13.18.<br />돼지고기수육5.6.10.13.<br />야채쌈 5.6.13.<br />쌈장5.6.<br />배추김치9.<br />뽕따카카오아이스크림1.2.5.<br />
+ <br /> * 에너지 : 1203.9/단백질 : 66.8/칼슘 : 443.3/철 : 13.3					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>17 일</span></th>
+				<td style="cursor: pointer;"><a title="17일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 17);">　
+					<ul>
+검정친환경쌀밥<br />OV.오지치즈후라이2.5.10.<br />런천미트햄구이(슬)1.2.5.6.10.12.15.16.<br />깻잎장아찌 <br />깍두기9.<br />미니케찹(일회용)12.<br />닭개장5.9.13.15.이력번호 2220050700401<br />
+ <br /> * 에너지 : 1094.3/단백질 : 52.2/칼슘 : 456.5/철 : 5.5					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>18 일</span></th>
+				<td style="cursor: pointer;"><a title="18일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 18);">　
+					<ul>
+김밥볶음밥(철판)-작은곳1.2.5.6.8.10.15.16.<br />국물떡볶이1.5.6.12.13.<br />스틱단무지<br />배추김치9.<br />어묵무국1.5.6.9.<br />아이스크림바-죠크바1.2.5.<br />친환경쌀밥-적은 양<br />큐브감자핫도그1.2.5.6.12.13.18.<br />
+ <br /> * 에너지 : 1232.3/단백질 : 41/칼슘 : 511.4/철 : 5.4					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>19 일</span></th>
+				<td style="cursor: pointer;"><a title="19일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 19);">　
+					<ul>
+김치콩나물밥5.6.9.10.16.<br />간장양념장5.6.18.<br />아욱된장국5.6.9.<br />순살대구살강정4.5.6.12.13.<br />깍두기9.<br />(수제)복숭아아이스티11.<br />친환경쌀밥<br />우리밀타코야끼꼬치1.2.5.6.10.13.15.16.18.<br />
+ <br /> * 에너지 : 892.8/단백질 : 39.1/칼슘 : 374.7/철 : 5.6					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>20 일</span></th>
+				<td style="cursor: pointer;"><a title="20일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 20);">　
+					<ul>
+김치말이국수(탕)1.5.6.9.16.18.<br />(수제)삼각김밥-(비빔약고추장)5.6.10.<br />배추김치9.<br />친환경쌀밥-자율<br />생야채겉절이 5.6.13.<br />수제)닭봉맛쵸킹5.6.13.15.이력번호222051600101<br />
+ <br /> * 에너지 : 1078.3/단백질 : 54.7/칼슘 : 375.8/철 : 8.4					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="cal_sat"><span class="pc_blue">21 일</span></th>
+				<td class="cal_sat" style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row" class="cal_sun"><span class="pc_red">22 일</span></th>
+				<td class="cal_sun" style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row"><span>23 일</span></th>
+				<td style="cursor: pointer;"><a title="23일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 23);">　
+					<ul>
+나가사끼짬뽕(탕) 5.6.9.13.15.17.18.<br />친환경쌀밥-자율<br />치즈와플+생크림1.2.5.6.<br />배추김치9.<br />단무지(부추)-우동날<br />저당요구르트2.<br />
+ <br /> * 에너지 : 770.7/단백질 : 26.5/칼슘 : 255.3/철 : 5.3					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>24 일</span></th>
+				<td style="cursor: pointer;"><a title="24일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 24);">　
+					<ul>
+하이라이스덮밥1.2.5.6.10.12.13.16.<br />시원메밀소바-3.5.6.7.13.18.<br />OV. 명랑우리쌀핫도그/소스1.2.5.6.10.12.13.15.18.<br />설레임(아이스)1.2.5.<br />배추김치9.<br />친환경쌀밥<br />매실오이지무침 13.<br />
+ <br /> * 에너지 : 1319.8/단백질 : 40.5/칼슘 : 387.9/철 : 4.6					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>25 일</span></th>
+				<td style="cursor: pointer;"><a title="25일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 25);">　
+					<ul>
+쌀밥<br />물냉면(탕)-삼겹후식용1.3.5.6.13.16.<br />OV.삼겹살데리야끼구이5.6.10.13.<br />배추김치9.<br />쌈장5.6.<br />야채쌈 5.6.13.<br />
+ <br /> * 에너지 : 1045.3/단백질 : 41.5/칼슘 : 47.3/철 : 3.4					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>26 일</span></th>
+				<td style="cursor: pointer;"><a title="26일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 26);">　
+					<ul>
+김치철판볶음밥(날치알)1.2.5.6.8.9.10.13.15.16.18.<br />(수제)바나나킥블라스트1.2.5.6.13.<br />배추김치9.<br />팽이버섯된장국5.6.9.<br />썬키스트음료-머스캣13.<br />OV.미니크루와상오븐구이1.2.5.6.<br />버터(개별)2.<br />친환경쌀밥<br />
+ <br /> * 에너지 : 1048.2/단백질 : 27.9/칼슘 : 333.7/철 : 4.7					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span>27 일</span></th>
+				<td style="cursor: pointer;"><a title="27일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 27);">　
+					<ul>
+수제참치김밥(1/2개)1.2.5.6.10.13.<br />해물짬뽕(탕)5.6.8.9.10.13.15.16.17.18.<br />배추김치9.<br />단무지<br />유기농쌀식혜<br />찹쌀꿀약과1.5.6.<br />친환경쌀밥-적은 양<br />
+ <br /> * 에너지 : 1081.7/단백질 : 44.1/칼슘 : 330.9/철 : 11.6					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="cal_sat"><span class="pc_blue">28 일</span></th>
+				<td class="cal_sat" style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row" class="cal_sun"><span class="pc_red">29 일</span></th>
+				<td class="cal_sun" style="cursor: pointer;">
+			</tr>
+			<tr>
+				<th scope="row"><span>30 일</span></th>
+				<td style="cursor: pointer;"><a title="30일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 30);">　
+					<ul>
+퀴노아잡곡친환경쌀밥5.<br />순두부바지락찌개1.5.6.9.13.18.<br />파채간장불고기2.5.6.10.13.18.<br />미역줄기팽이버섯볶음1.5.6.<br />배추김치9.<br />불고기왕꼬치핫바2.5.6.10.15.16.<br />
+ <br /> * 에너지 : 961.6/단백질 : 68/칼슘 : 328/철 : 8.7					</ul>
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="today"><span>31 일</span></th>
+				<td class="today" style="cursor: pointer;"><a title="31일 식단 상세보기 페이지로 새 창 이동" href="javascript:judgeMentAction('view', 31);">　
+					<ul>
+검정친환경쌀밥<br />스팸햄김치찌개1.2.5.6.9.10.12.13.15.16.<br />안동찜닭5.6.8.12.13.15.18.<br />깍두기9.<br />숙주부추나물 5.6.13.16.18.<br />구이김<br />
+ <br /> * 에너지 : 1033.2/단백질 : 63.1/칼슘 : 262.4/철 : 6.4					</ul>
+				</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<!-- //모바일, 태블릿 -->
+
+
+		<p class="allergy">
+		* 알레르기 정보<br/>
+		①난류 ②우유 ③메밀 ④땅콩 ⑤대두 ⑥밀 ⑦고등어 ⑧게 ⑨새우 ⑩돼지고기 ⑪복숭아 ⑫토마토 ⑬아황산류 ⑭호두 ⑮닭고기 ⑯쇠고기 ⑰오징어 ⑱조개류(굴,전복,홍합 포함) ⑲잣
+		
+		
+			<br/>
+		
+		</p>
+		
+		<!-- //달력 출력 -->
+		<!-- 식단등록버튼 출력 -->
+		
+		<!-- //식단등록버튼 출력 -->
+	</div>
+	<!-- /con_body(scheduleCal) -->
+	<br />
+	
+</form>
+<form name="foodCrawFrm" method="post">
+	<input type="hidden" name="sysID" value="icpa" />
+	
+	<div id="neisCraw_Area" style="display:none;">
+		<div class="tableTy2" id="crawDiv">
+			
+			
+			
+			<table summary="이달의 식단 정보를 나이스 연계를 통해 등록합니다." class='data'>
+				<caption>이달의 식단 정보를 나이스 연계를 통해 등록합니다.</caption>
+				<tr>
+					<th style='text-align: center !important;' colspan='2'><font size='4px !important;'>나이스연계</font></th>
+				</tr>
+				<tr style='text-align: left;'>
+					<th>등록년도 선택</th>
+					<td>
+					<label for="year" class="hid"></label>
+						<select id="year" name="year" style="width:100px;">
+							<option value="2021">2021</option>
+							<option value="2022" selected>2022</option>
+							<option value="2023">2023</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>등록월 선택</th>
+					<td>
+					<label for="month" class="hid"></label>
+						<select id="month" name="month" style="width:100px;">
+						
+							<option value="01" >01</option>
+                   			
+						
+							<option value="02" >02</option>
+                   			
+						
+							<option value="03" >03</option>
+                   			
+						
+							<option value="04" >04</option>
+                   			
+						
+							<option value="05" >05</option>
+                   			
+						
+							<option value="06" >06</option>
+                   			
+						
+							<option value="07" >07</option>
+                   			
+						
+							<option value="08" >08</option>
+                   			
+						
+							<option value="09" >09</option>
+                   			
+						
+							
+                   			<option value="10" >10</option>
+						
+							
+                   			<option value="11" >11</option>
+						
+							
+                   			<option value="12" >12</option>
+						
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id ="waitText"  class="btn_area"></div>
+		<div id="waitHid" class="btn_area">
+			<a href="javascript:neisCrawData('070306');" class="btn_blue">실행</a>
+			<a href="javascript:hideNeisCrawData();" class="btn_blue">닫기</a>
+		</div>
+	</div>
+</form>
+	                                       </div>
+									</div>
+	                               </div>								
+							</div>
+						</section>
+					</div>
+				</div>
+				
+
+
+
+
+
+
+
+
+
+<script>
+
+	function  updateAddr(){
+		var forms = document.footerFrm;
+		forms.action = "/updateAddress.do";
+		forms.submit();
+	}
+</script>
+<footer>
+	<div class="area_footer">
+		<div class="box_footer">
+			<div class="footer_link">
+				<ul>
+					<li class="point"><a href="#privacy" onClick="javascript:priPrivacy()" title="개인정보처리방침">개인정보처리방침</a></li>
+					<li><a href="#copyright" onClick="javascript:copyright()" title="저작권보호정책">저작권보호정책</a></li>
+					<li><a href="#email" onClick="javascript:email()" title="이메일무단수집거부">이메일무단수집거부</a></li>
+					<li><a href="/sub/info.do?page=9999&m=35&s=icpa" title="110화상수화통역서비스">110화상수화통역서비스</a></li>
+					<li><a href="http://www.ice.go.kr/main/nanum/intro.html"  target="_blank" title="학생봉사/교육기부">학생봉사/교육기부</a></li>
+					<li><a href="/apple/urlfileMgt/filedown.do?fileSeq=39b0e6ca0e9e1f16e0018fbc2cc2ed63" title="운영지침">학교통합홈페이지 운영지침</a></li>
+				</ul>
+			</div>
+			<br/>
+			<!-- 방문자수 -->
+			<div class="visitant">
+				<h2>방문자 통계</h2>
+				<ul>
+					<li class="today"><strong>Today</strong>780명</li>
+					<li class="total"><strong>Total</strong>3,585,689명</li>
+				</ul>
+			</div>
+			<!--// 방문자수 -->
+			<div class="box_info clearfix">
+				<address>
+					
+					
+				</address>
+			</div>
+			<p class="copyright">Copyright(C) 인천포스코고등학교. All Rights Reserved.</p>
+		</div>
+	</div>
+</footer>
+				<div class="btn_top"><a href="#" class="top"><img src="/images/template/01158/common/btn_top.png" alt="맨위로 가기"/></a></div>
+			</div>
+		</div>
+	</body>
+</html>	

@@ -1,0 +1,41 @@
+{
+    "object_type": "list",
+    "header_title": f"{date}일 {meal_type}메뉴",
+    "header_link": {
+        "web_url": "www.naver.com",
+        "mobile_web_url": "www.naver.com"
+    },
+    "contents": [
+        {
+            "title": f"1. {meal[0]}",
+            "description": "설명1",
+            "image_url": "https://mblogthumb-phinf.pstatic.net/MjAxNzA5MDhfNDYg/MDAxNTA0ODQxOTUyNjAz.JNuozDBshc8Vyr68tsqI53x9egyAM06UZCV9CPJHqZEg.riH2bHidpLf9o3E7BeBbqMDawTbOrAdpxnc-sW-u7WAg.JPEG.86secret/image_7565456771504840425261.jpg?type=w800",
+            "image_width": 50, "image_height": 50,
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        },
+        {
+            "title": f"2. {meal[1]}",
+            "description": "설명2",
+            "image_url": "https://recipe1.ezmember.co.kr/cache/recipe/2017/07/09/c785bb4a02c81a4af294b9ff870d73b91.jpg",
+            "image_width": 50, "image_height": 50,
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        }
+
+    ],
+    "buttons": [
+        {
+            "title": "웹으로 이동",
+            "link": {
+                "web_url": "www.naver.com",
+                "mobile_web_url": "www.naver.com"
+            }
+        }
+    ]
+
+}
