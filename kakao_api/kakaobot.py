@@ -1,8 +1,3 @@
-########################################
-# 배포 시 19, 20줄에 있는 ID, 비밀번호 수정 후 배포
-########################################
-
-
 import time
 from selenium import webdriver
 import re
@@ -15,10 +10,10 @@ import os
 import requests
 import json
 
-#############
-kakao_id = "joohjdays@kakao.com"
-kakao_password = "tj2538123"
-#############
+
+
+
+
 
 options = webdriver.ChromeOptions()
 options.add_argument('--window-size=1000,1000')
@@ -192,8 +187,7 @@ def run_kakao():
         print('[ERROR] Execute Kakaotalk')
         raise
 
-
-def enter_chatroom(chat_name):
+"def enter_chatroom(chat_name):
     # enter_chat_category()
     click_img('search_button.png')
     pyperclip.copy(chat_name)
@@ -227,10 +221,10 @@ def talk_check(my_msg):
         chatroom_idx = 1
         my_msg = 'test'
     """
-    # chat_name = "2-3 쌤없는 반톡"
-    # chat_name = "ICPA 2-3"
-    chat_name = "주현재"
-    # chat_name = "이재원"
+    
+    
+    chat_name = "asd"
+    
 
     run_kakao()
     enter_chatroom(chat_name)
